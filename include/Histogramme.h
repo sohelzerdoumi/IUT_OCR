@@ -1,7 +1,7 @@
 #ifndef HISTOGRAMME_H
 #define HISTOGRAMME_H
-#include <SFML/Graphics.hpp>
-#define SEUIL 200*3
+#include "CImg.h"
+#define SEUIL 220*3
 
 enum HISTOGRAMME_TYPE{
     HISTOGRAMME_HORIZONTAL,
@@ -13,7 +13,7 @@ class Histogramme
 {
     public:
         Histogramme(const Histogramme & h);
-        Histogramme(sf::Sprite * img, HISTOGRAMME_TYPE typeHistogramme);
+        Histogramme(cimg_library::CImg<int>  *  cimg, HISTOGRAMME_TYPE typeHistogramme);
         virtual ~Histogramme();
         void generate();
         float compare(const Histogramme & h);
@@ -23,11 +23,10 @@ class Histogramme
         int                     _data_quantity;
         int                     _data_size;
         int *                   _data;
-        sf::Sprite *             _sprite;
+        cimg_library::CImg<int>  *  _cimg;
 
     public:
         HISTOGRAMME_TYPE        getType();
-        Histogramme &           operator=(const Histogramme & h);
 
 };
 

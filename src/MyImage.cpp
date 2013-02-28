@@ -2,39 +2,31 @@
 
 #include <iostream>
 
+using namespace cimg_library;
 using namespace std;
 
 MyImage::MyImage(std::string filename)
-: hHorizontal(this, HISTOGRAMME_HORIZONTAL),hVertical(this, HISTOGRAMME_VERTICAL)
+: _cimg(filename.c_str()), hHorizontal(&_cimg, HISTOGRAMME_HORIZONTAL),hVertical(&_cimg, HISTOGRAMME_VERTICAL)
 {
     _filename = filename;
-    cout << filename<< endl;
-    _img.LoadFromFile(filename);
-    SetImage(_img);
     generateHistogrammes();
 
 }
 
 MyImage::MyImage(const MyImage & i)
-: hHorizontal(this, HISTOGRAMME_HORIZONTAL),hVertical(this, HISTOGRAMME_VERTICAL)
+: _cimg( i._filename.c_str()), hHorizontal(&_cimg, HISTOGRAMME_HORIZONTAL),hVertical(&_cimg, HISTOGRAMME_VERTICAL)
 {
     cout << "MyImage::copie" << endl;
     _filename = i._filename;
-    _img.LoadFromFile(_filename);
-    SetImage(_img);
     generateHistogrammes();
 }
 
 float MyImage::compare(const MyImage & i){
     MyImage tmp(i);
-    tmp.Resize( 100, 100);
-    tmp.GetPixel(0,30);
-    //tmp.generateHistogrammes();
-    cout << "Compare x : " << tmp.GetSize().x << "  " <<  GetSize().x  << endl;
-    cout << "Compare y : " << tmp.GetSize().y << "  " <<  GetSize().y  << endl;
-
-    return 1;
-    //return ( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) )/2 ;
+    tmp._cimg.resize( _cimg.width() , _cimg.height() );
+    tmp.generateHistogrammes();
+    //return 1;
+    return ( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) )/2 ;
 }
 
 MyImage::~MyImage(){}

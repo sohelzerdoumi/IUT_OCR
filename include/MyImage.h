@@ -1,12 +1,11 @@
 #ifndef MYIMAGE_H
 #define MYIMAGE_H
-#include <SFML/Graphics.hpp>
-//#include "CImg.h"
+#include "CImg.h"
 
 #include <string>
 #include "Histogramme.h"
 
-class MyImage : public sf::Sprite
+class MyImage
 {
     public:
         MyImage(const MyImage & i);
@@ -16,10 +15,10 @@ class MyImage : public sf::Sprite
         void generateHistogrammes();
         float compare(const MyImage & i);
     private:
+        cimg_library::CImg<int>        _cimg;
         Histogramme hHorizontal;
         Histogramme hVertical;
-        sf::Image       _img;
-        std::string     _filename;
+        std::string                 _filename;
 };
 
 #endif // MYIMAGE_H

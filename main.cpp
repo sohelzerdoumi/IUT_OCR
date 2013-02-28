@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     MyImage a("base/2/2_1.png");
-    MyImage b("base/2/2_3.png");
+    MyImage b("base/3/3_4.png");
     //a.Resize(23,21);
     //a.generateHistogrammes();
     cout << a.compare(b) << endl;
