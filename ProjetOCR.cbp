@@ -35,11 +35,15 @@
 		<Linker>
 			<Add option="-lsfml-window -lsfml-system -lsfml-graphics    -lsqlite3" />
 		</Linker>
+		<Unit filename="include/Classe.h" />
 		<Unit filename="include/Histogramme.h" />
 		<Unit filename="include/MyImage.h" />
+		<Unit filename="include/OCR.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Classe.cpp" />
 		<Unit filename="src/Histogramme.cpp" />
 		<Unit filename="src/MyImage.cpp" />
+		<Unit filename="src/OCR.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
