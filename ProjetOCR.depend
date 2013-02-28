@@ -1,16 +1,19 @@
 # depslib dependency file v1.0
-1362049161 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
+1362060589 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
 	<SFML/Graphics.hpp>
-
-1362051391 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
 	"MyImage.h"
 
-1362051408 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
-	<SFML/Graphics.hpp>
+1362060685 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
+	"MyImage.h"
 
-1362051535 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Histogramme.cpp
+1362060610 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
+	<SFML/Graphics.hpp>
+	"Histogramme.h"
+
+1362060435 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Histogramme.cpp
 	"Histogramme.h"
 	<stdlib.h>
 
-1362051506 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
+1362060441 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
+	<SFML/Graphics.hpp>
 
