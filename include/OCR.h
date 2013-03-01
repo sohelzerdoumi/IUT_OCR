@@ -7,11 +7,18 @@
 
 #include "Classe.h"
 
+struct Correspondance{
+    float diffMin;
+    Classe * classe;
+
+} ;
+
 class OCR
 {
     public:
         static OCR *    instance();
         static void     destroy();
+        Correspondance getCorrespondance(MyImage & image);
 
     private:
         OCR();

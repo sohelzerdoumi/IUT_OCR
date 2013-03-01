@@ -19,6 +19,7 @@ class MyImage
         Histogramme hHorizontal;
         Histogramme hVertical;
         std::string                 _filename;
+        void                        crop();
 };
 
 #endif // MYIMAGE_H

@@ -9,10 +9,10 @@ class Classe
         Classe(const std::string & nomClasse);
         virtual ~Classe();
         const std::string  nom;
-
+        float getCorrespondanceMin(MyImage & image);
     private:
         std::vector<MyImage *>   _images;
-        void loadImage(const std::string & filename);
+        void addImage(const std::string & filename);
 
 };
 

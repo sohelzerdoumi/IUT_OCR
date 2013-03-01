@@ -18,7 +18,7 @@ Histogramme::Histogramme(cimg_library::CImg<int>  *  cimg, HISTOGRAMME_TYPE type
 }
 
 void Histogramme::generate(){
-    cout << "Histo:gen " << _cimg << " " << _cimg->width() << " " << _cimg->height() << endl;
+    //cout << "Histo:gen " << _cimg << " " << _cimg->width() << " " << _cimg->height() << endl;
     _data_quantity = 0;
     if( _data != NULL)
         delete _data;
@@ -75,6 +75,14 @@ Histogramme::~Histogramme()
 
 HISTOGRAMME_TYPE        Histogramme::getType(){
     return type;
+}
+
+
+const int *             Histogramme::getData(){
+    return _data;
+}
+int                     Histogramme::getSize(){
+    return _data_size;
 }
 
 

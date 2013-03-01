@@ -30,9 +30,32 @@ OCR::OCR()
     while ( (subDir = readdir(currentDir)) !=  NULL ){
         tmp_dirName =subDir->d_name;
         if( tmp_dirName != "." && tmp_dirName  != ".." )
-            /* Creation */
+            /** Creation **/
             _classes.push_back( new Classe( tmp_dirName) );
     }
+}
+
+
+Correspondance OCR::getCorrespondance(MyImage & image){
+    Correspondance c={0,0};
+    float differenceMin = 101;
+    float tmp_diff = 101;
+    int   id_diffMin = -1;
+    for(int i=0; i < (signed)_classes.size() ;i++){
+        tmp_diff = _classes[i]->getCorrespondanceMin(image);
+        cout << _classes[i]->nom << " " << tmp_diff << endl;
+        if( tmp_diff < differenceMin  ){
+            differenceMin = tmp_diff;
+            id_diffMin = i;
+        }
+    }
+
+    if( id_diffMin != -1){
+        c.diffMin = differenceMin;
+        c.classe  = _classes[id_diffMin];
+    }
+
+    return c;
 }
 
 OCR::~OCR()

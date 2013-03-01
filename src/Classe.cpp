@@ -20,14 +20,25 @@ Classe::Classe(const std::string & nomClasse)
     while ( (subDir = readdir(currentDir)) !=  NULL ){
         tmp_dirName =subDir->d_name;
         if( tmp_dirName != "." && tmp_dirName  != ".." )
-            loadImage(tmp_dirName);
+            addImage(tmp_dirName);
     }
 }
 
 Classe::~Classe(){}
 
+float Classe::getCorrespondanceMin(MyImage & image){
+    float correspondance = 101;
+    float tmp_corresp = 101;
+    for(int i=0; i < (signed)_images.size() ;i++){
+        tmp_corresp = _images[i]->compare(image);
 
-void Classe::loadImage(const std::string & filename){
+        correspondance = ( tmp_corresp < correspondance ) ? tmp_corresp : correspondance;
+    }
+
+    return correspondance;
+}
+
+void Classe::addImage(const std::string & filename){
     string imageFilename =  PATH_BASE;
             imageFilename += "/";
             imageFilename += nom  ;

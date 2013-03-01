@@ -5,13 +5,21 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char ** argv)
 {
-    MyImage a("base/2/2_1.png");
-    MyImage b("base/3/3_4.png");
-    //a.Resize(23,21);
-    //a.generateHistogrammes();
-    cout << a.compare(b) << endl;
-//    OCR::instance();
+
+    if( argc < 2){
+        cout    << " Usage :" << endl
+                << argv[0] << " (filename) " << endl;
+        return EXIT_SUCCESS;
+    }
+    MyImage a(argv[1]);
+
+//    MyImage a("tests/9.png");
+    Correspondance c = OCR::instance()->getCorrespondance(a);
+    cout << "Correspondance : " << endl
+         << " taux = " << 100-c.diffMin << "%"<< endl
+         << " classe = " << c.classe->nom << endl;
+
     return EXIT_SUCCESS;
 }
