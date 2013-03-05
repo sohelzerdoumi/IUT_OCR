@@ -34,6 +34,8 @@
 		</Compiler>
 		<Linker>
 			<Add option="-lsfml-window -lsfml-system -lsfml-graphics    -lsqlite3" />
+			<Add option="-lX11" />
+			<Add option="-lpthread" />
 		</Linker>
 		<Unit filename="include/Classe.h" />
 		<Unit filename="include/Histogramme.h" />

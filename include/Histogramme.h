@@ -1,7 +1,7 @@
 #ifndef HISTOGRAMME_H
 #define HISTOGRAMME_H
 #include "CImg.h"
-#define SEUIL 200*3
+#define SEUIL 240
 
 enum HISTOGRAMME_TYPE{
     HISTOGRAMME_HORIZONTAL,
@@ -29,6 +29,7 @@ class Histogramme
         HISTOGRAMME_TYPE        getType();
         const int *             getData();
         int                     getSize();
+        int                     getDataQuantity();
 
 };
 

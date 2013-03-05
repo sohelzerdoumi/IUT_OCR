@@ -11,7 +11,7 @@ Classe::Classe(const std::string & nomClasse)
 {
     DIR	*  currentDir;
     struct dirent *	subDir;
-    string  pathDir = PATH_BASE;
+            pathDir = PATH_BASE;
             pathDir += "/";
             pathDir += nom  ;
     currentDir = opendir( pathDir.c_str());
@@ -22,13 +22,14 @@ Classe::Classe(const std::string & nomClasse)
         if( tmp_dirName != "." && tmp_dirName  != ".." )
             addImage(tmp_dirName);
     }
+
 }
 
 Classe::~Classe(){}
 
 float Classe::getCorrespondanceMin(MyImage & image){
-    float correspondance = 101;
-    float tmp_corresp = 101;
+    float correspondance = 10000000;
+    float tmp_corresp = 10000000;
     for(int i=0; i < (signed)_images.size() ;i++){
         tmp_corresp = _images[i]->compare(image);
 
@@ -39,13 +40,7 @@ float Classe::getCorrespondanceMin(MyImage & image){
 }
 
 void Classe::addImage(const std::string & filename){
-    string imageFilename =  PATH_BASE;
-            imageFilename += "/";
-            imageFilename += nom  ;
-            imageFilename += "/"  ;
-            imageFilename += filename  ;
-
-
-    MyImage * image = new MyImage( imageFilename );
+    MyImage * image = new MyImage( pathDir + "/" + filename );
     _images.push_back( image);
+
 }

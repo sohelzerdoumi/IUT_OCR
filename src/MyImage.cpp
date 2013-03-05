@@ -1,5 +1,6 @@
 #include "MyImage.h"
 
+#include <cmath>
 #include <iostream>
 
 using namespace cimg_library;
@@ -9,72 +10,81 @@ MyImage::MyImage(std::string filename)
 : _cimg(filename.c_str()), hHorizontal(&_cimg, HISTOGRAMME_HORIZONTAL),hVertical(&_cimg, HISTOGRAMME_VERTICAL)
 {
     _filename = filename;
+    toBinary();
+    //_cimg.erode(1,1);
+    generateZoning();
     generateHistogrammes();
+    //cout << _cimg.variance()<< endl;;
+    //_cimg.display();
 
 }
 
 MyImage::MyImage(const MyImage & i)
 : _cimg( i._filename.c_str()), hHorizontal(&_cimg, HISTOGRAMME_HORIZONTAL),hVertical(&_cimg, HISTOGRAMME_VERTICAL)
 {
-    //cout << "MyImage::copie" << endl;
     _filename = i._filename;
+    toBinary();
+    generateZoning();
     generateHistogrammes();
 }
+
+void MyImage::toBinary(){
+    int largeur = _cimg.width();
+    int hauteur =  _cimg.height();
+    int * currentPixel;
+
+
+    for(int c = 0; c < largeur ; c++ )
+        for(int l = 0 ; l < hauteur ; l++){
+            currentPixel = _cimg.data(c,l);
+            currentPixel[0] = (currentPixel[0] > SEUIL) * 255;
+        }
+
+}
+
+
+
 
 float MyImage::compare(const MyImage & i){
     MyImage tmp(i);
     tmp._cimg.resize( _cimg.width() , _cimg.height() );
+    tmp.toBinary();
+    tmp.generateZoning();
     tmp.generateHistogrammes();
+//    int isoDiff = abs(tmp.hVertical.getDataQuantity() - hVertical.getDataQuantity() );
+    //cout << i._filename << " - " << _filename << " = " << isoDiff << endl;
     //return 1;
-    return ( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) )/2 ;
+    return /*( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) )**/compareZoning(i);//*(isoDiff == 0 ? 1 : 1+isoDiff/50) ;
 }
 
-void MyImage::crop(){
-    int xMin=0, yMin=0, xMax=1000000000, yMax=1000000000;
-    const int * tmp_data;
+float MyImage::compareZoning(const MyImage & i){
+    float diff = 0;
+      for(int c = 0; c < 3; c++)
+        for(int l =0 ; l <3 ; l++)
+            diff = abs(_zone[c][l] - i._zone[c][l]);
 
-    /*
-     * Horizontal
-     */
-     tmp_data = hHorizontal.getData();
-     while(xMin < hHorizontal.getSize()){
-        if( tmp_data[xMin] > 0 )
-            break;
-     xMin++;}
+    return diff;
+}
 
-    xMax = hHorizontal.getSize() -1;
-    while(xMax >= 0){
-        if( tmp_data[xMax] > 0 )
-            break;
-     xMax--;} xMax++;
 
-    /*
-     * Vertical
-     */
-     tmp_data = hVertical.getData();
-     while(yMin < hVertical.getSize()){
-        if( tmp_data[yMin] > 0 )
-            break;
-     yMin++;}
+void MyImage::generateZoning(){
+    for(int c = 0; c < 3; c++)
+        for(int l =0 ; l <3 ; l++)
+            _zone[c][l] = _cimg.get_crop( c*_cimg.width()/3, l*_cimg.height()/3 ,0,
+                                         (c+1)*_cimg.width()/3 , (l+1)*_cimg.height()/3 ).mean();
 
-    yMax = hVertical.getSize() -1;
-    while(yMax >= 0){
-        if( tmp_data[yMax] > 0 )
-            break;
-     yMax--;} yMax++;
 
-        cout << xMin << " " << yMin << "    " << xMax << " " << yMax << endl;
-     _cimg.crop(xMin,yMin,0, xMax,yMax,0);
+}
 
+void MyImage::display(){
+    _cimg.display();
 }
 
 MyImage::~MyImage(){}
 
 
 void MyImage::generateHistogrammes(){
-    hHorizontal.generate();
-    hVertical.generate();
-    crop();
+    _cimg.autocrop(255);
     hHorizontal.generate();
     hVertical.generate();
 }

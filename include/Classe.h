@@ -13,6 +13,7 @@ class Classe
     private:
         std::vector<MyImage *>   _images;
         void addImage(const std::string & filename);
+        std::string  pathDir;
 
 };
 

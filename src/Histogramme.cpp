@@ -34,7 +34,7 @@ void Histogramme::generate(){
             _data[c] = 0;
             for(int l = 0 ; l < hauteur ; l++){
                 currentPixel = _cimg->data(c,l);
-                _data[c]+= (currentPixel[0] + currentPixel[1] + currentPixel[2]) < SEUIL;
+                _data[c]+= (currentPixel[0] /*+ currentPixel[1] + currentPixel[2]*/) < SEUIL;
             }
 
             _data_quantity += _data[c];
@@ -46,7 +46,7 @@ void Histogramme::generate(){
             _data[l] = 0;
             for(int c = 0; c < largeur ; c++ ){
                 currentPixel = _cimg->data(c,l);
-                _data[l]+= (currentPixel[0] + currentPixel[1] + currentPixel[2]) < SEUIL;
+                _data[l]+= (currentPixel[0] /*+ currentPixel[1] + currentPixel[2]*/) < SEUIL;
             }
             _data_quantity += _data[l];
 
@@ -58,12 +58,11 @@ void Histogramme::generate(){
 
 
 float Histogramme::compare(const Histogramme & h){
-    //if( h._data_size != _data_size)
-    //    return 101.0f;
     int differences = 0;
     for(int i=0; i < _data_size ; i++)
         differences += abs( _data[i] - h._data[i]  );
-    return (differences*100)/(h._data_quantity + _data_quantity);
+    return differences;
+    //return (differences*100)/(h._data_quantity + _data_quantity);
 }
 
 Histogramme::~Histogramme()
@@ -83,6 +82,9 @@ const int *             Histogramme::getData(){
 }
 int                     Histogramme::getSize(){
     return _data_size;
+}
+int                     Histogramme::getDataQuantity(){
+    return _data_quantity;
 }
 
 

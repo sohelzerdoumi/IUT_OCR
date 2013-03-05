@@ -1,39 +1,40 @@
 # depslib dependency file v1.0
-1362097469 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
+1362440461 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"MyImage.h"
 	"OCR.h"
 
-1362097690 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
+1362441820 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
 	"MyImage.h"
+	<cmath>
 	<iostream>
 
-1362096256 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
+1362441321 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
 	"CImg.h"
 	<string>
 	"Histogramme.h"
 
-1362096614 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Histogramme.cpp
+1362439934 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Histogramme.cpp
 	"Histogramme.h"
 	<cmath>
 	<stdlib.h>
 	<iostream>
 
-1362098573 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
+1362438034 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
 	"CImg.h"
 
-1362094602 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
+1362437549 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
 	<dirent.h>
 	<iostream>
 	"Classe.h"
 	"OCR.h"
 
-1362094593 /home/sohel/IUT/S4_Image/ProjetOCR/include/Classe.h
+1362435908 /home/sohel/IUT/S4_Image/ProjetOCR/include/Classe.h
 	"MyImage.h"
 	<vector>
 
-1362095282 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
+1362126767 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
 	<dirent.h>
 	<string>
 	<iostream>

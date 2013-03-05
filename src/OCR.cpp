@@ -38,8 +38,8 @@ OCR::OCR()
 
 Correspondance OCR::getCorrespondance(MyImage & image){
     Correspondance c={0,0};
-    float differenceMin = 101;
-    float tmp_diff = 101;
+    float differenceMin = 100000000;
+    float tmp_diff = 10000000;
     int   id_diffMin = -1;
     for(int i=0; i < (signed)_classes.size() ;i++){
         tmp_diff = _classes[i]->getCorrespondanceMin(image);

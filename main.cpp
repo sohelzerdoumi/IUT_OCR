@@ -7,19 +7,24 @@ using namespace std;
 
 int main(int argc, char ** argv)
 {
-
+    #ifndef DEBUG_MODE
     if( argc < 2){
         cout    << " Usage :" << endl
                 << argv[0] << " (filename) " << endl;
         return EXIT_SUCCESS;
     }
     MyImage a(argv[1]);
+    #else
+    MyImage a("tests/9.png");
 
-//    MyImage a("tests/9.png");
+    #endif
+
+
     Correspondance c = OCR::instance()->getCorrespondance(a);
     cout << "Correspondance : " << endl
          << " taux = " << 100-c.diffMin << "%"<< endl
          << " classe = " << c.classe->nom << endl;
 
+    a.display();
     return EXIT_SUCCESS;
 }

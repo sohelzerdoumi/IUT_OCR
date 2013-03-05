@@ -14,12 +14,16 @@ class MyImage
 
         void generateHistogrammes();
         float compare(const MyImage & i);
+        float compareZoning(const MyImage & i);
+        void    generateZoning();
+        void display();
     private:
+        double                          _zone[3][3];
         cimg_library::CImg<int>        _cimg;
         Histogramme hHorizontal;
         Histogramme hVertical;
         std::string                 _filename;
-        void                        crop();
+        void                        toBinary();
 };
 
 #endif // MYIMAGE_H
