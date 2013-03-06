@@ -51,33 +51,39 @@ float MyImage::compare(const MyImage & i){
     tmp.toBinary();
     tmp.generateZoning();
     tmp.generateHistogrammes();
-//    int isoDiff = abs(tmp.hVertical.getDataQuantity() - hVertical.getDataQuantity() );
-    //cout << i._filename << " - " << _filename << " = " << isoDiff << endl;
-    //return 1;
-    return /*( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) )**/compareZoning(i);//*(isoDiff == 0 ? 1 : 1+isoDiff/50) ;
+
+    int diffHistogramme = ( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) );
+
+
+    return diffHistogramme;//*compareZoning(i);//*(isoDiff == 0 ? 1 : 1+isoDiff/50) ;
 }
 
 float MyImage::compareZoning(const MyImage & i){
     float diff = 0;
-      for(int c = 0; c < 3; c++)
-        for(int l =0 ; l <3 ; l++)
-            diff = abs(_zone[c][l] - i._zone[c][l]);
-
+      for(int c = 0; c < ZONING_LARGEUR; c++)
+        for(int l =0 ; l <ZONING_HAUTEUR ; l++)
+            diff += abs(_zone[c][l] - i._zone[c][l]);
+    //cout << diff << endl;
+    if( diff > (ZONING_LARGEUR*ZONING_HAUTEUR)*ZONING_DIFF_MAX )
+        diff= 100000;
     return diff;
 }
 
 
 void MyImage::generateZoning(){
-    for(int c = 0; c < 3; c++)
-        for(int l =0 ; l <3 ; l++)
-            _zone[c][l] = _cimg.get_crop( c*_cimg.width()/3, l*_cimg.height()/3 ,0,
-                                         (c+1)*_cimg.width()/3 , (l+1)*_cimg.height()/3 ).mean();
+    int largeur = _cimg.width()/ZONING_LARGEUR-1;
+    int hauteur = _cimg.height()/ZONING_HAUTEUR-1;
+    for(int c = 0; c < ZONING_LARGEUR; c++)
+        for(int l =0 ; l < ZONING_HAUTEUR ; l++)
+            _zone[c][l] = _cimg.get_crop( c*largeur, l*hauteur ,0,
+                                         (c+1)*largeur , (l+1)*hauteur,0 ).mean();
 
 
 }
 
 void MyImage::display(){
     _cimg.display();
+
 }
 
 MyImage::~MyImage(){}

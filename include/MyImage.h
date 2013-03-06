@@ -4,6 +4,10 @@
 
 #include <string>
 #include "Histogramme.h"
+#define ZONING_LARGEUR 3
+#define ZONING_HAUTEUR 3
+#define ZONING_DIFF_MAX 100
+
 
 class MyImage
 {
@@ -18,7 +22,7 @@ class MyImage
         void    generateZoning();
         void display();
     private:
-        double                          _zone[3][3];
+        double                          _zone[ZONING_LARGEUR][ZONING_HAUTEUR];
         cimg_library::CImg<int>        _cimg;
         Histogramme hHorizontal;
         Histogramme hVertical;

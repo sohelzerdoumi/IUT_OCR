@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <iostream>
 
+#define SEUIL_DIFF_HISTOGRAMME_MAX 0.30f
+
 using namespace std;
 using namespace cimg_library;
 
@@ -59,8 +61,14 @@ void Histogramme::generate(){
 
 float Histogramme::compare(const Histogramme & h){
     int differences = 0;
+    if(_data_size != h._data_size)
+        return 100000;
     for(int i=0; i < _data_size ; i++)
-        differences += abs( _data[i] - h._data[i]  );
+        differences += abs( _data[i] - h._data[i] * _data_quantity/h._data_quantity  );
+
+    //cout << differences << " " << h._data_quantity + _data_quantity << " | " << SEUIL_DIFF_HISTOGRAMME_MAX<< " < " << (float)differences / (h._data_quantity + _data_quantity) << endl;
+    if( SEUIL_DIFF_HISTOGRAMME_MAX <  (float)differences / (h._data_quantity + _data_quantity))
+        differences = 100000;
     return differences;
     //return (differences*100)/(h._data_quantity + _data_quantity);
 }
@@ -86,7 +94,6 @@ int                     Histogramme::getSize(){
 int                     Histogramme::getDataQuantity(){
     return _data_quantity;
 }
-
 
 Histogramme::Histogramme(const Histogramme & h)
 {

@@ -1,7 +1,7 @@
 #ifndef HISTOGRAMME_H
 #define HISTOGRAMME_H
 #include "CImg.h"
-#define SEUIL 240
+#define SEUIL 200
 
 enum HISTOGRAMME_TYPE{
     HISTOGRAMME_HORIZONTAL,
