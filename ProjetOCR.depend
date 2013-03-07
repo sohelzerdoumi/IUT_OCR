@@ -5,15 +5,16 @@
 	"MyImage.h"
 	"OCR.h"
 
-1362576872 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
+1362582872 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
 	"MyImage.h"
 	<cmath>
 	<iostream>
 
-1362575367 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
+1362582771 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
 	"CImg.h"
 	<string>
-	"Histogramme.h"
+	<vector>
+	"caracteristique/Caracteristique.h"
 
 1362576813 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Histogramme.cpp
 	"Histogramme.h"
@@ -44,4 +45,28 @@
 	<stdlib.h>
 	<vector>
 	"Classe.h"
+
+1362579290 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Caracteristique.cpp
+	"caracteristique/Caracteristique.h"
+
+1362580682 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Caracteristique.h
+	"CImg.h"
+	<string>
+	"Histogramme.h"
+	"Zoning.h"
+
+1362580690 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Histogramme.h
+	"Caracteristique.h"
+
+1362582924 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Histogramme.cpp
+	"caracteristique/Histogramme.h"
+	<cmath>
+	<stdlib.h>
+	<iostream>
+
+1362583035 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Zoning.h
+	"Caracteristique.h"
+
+1362580803 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Zoning.cpp
+	"caracteristique/Zoning.h"
 

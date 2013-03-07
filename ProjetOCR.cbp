@@ -38,14 +38,18 @@
 			<Add option="-lpthread" />
 		</Linker>
 		<Unit filename="include/Classe.h" />
-		<Unit filename="include/Histogramme.h" />
 		<Unit filename="include/MyImage.h" />
 		<Unit filename="include/OCR.h" />
+		<Unit filename="include/caracteristique/Caracteristique.h" />
+		<Unit filename="include/caracteristique/Histogramme.h" />
+		<Unit filename="include/caracteristique/Zoning.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Classe.cpp" />
-		<Unit filename="src/Histogramme.cpp" />
 		<Unit filename="src/MyImage.cpp" />
 		<Unit filename="src/OCR.cpp" />
+		<Unit filename="src/caracteristique/Caracteristique.cpp" />
+		<Unit filename="src/caracteristique/Histogramme.cpp" />
+		<Unit filename="src/caracteristique/Zoning.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
