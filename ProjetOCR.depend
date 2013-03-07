@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1362577032 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
+1362646695 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"MyImage.h"
 	"OCR.h"
 
-1362582872 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
+1362645444 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
 	"MyImage.h"
 	<cmath>
 	<iostream>
 
-1362582771 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
+1362645450 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
 	"CImg.h"
 	<string>
 	<vector>
@@ -25,23 +25,27 @@
 1362576818 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
 	"CImg.h"
 
-1362437549 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
+1362644974 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
 	<dirent.h>
 	<iostream>
 	"Classe.h"
 	"OCR.h"
 
-1362435908 /home/sohel/IUT/S4_Image/ProjetOCR/include/Classe.h
+1362643257 /home/sohel/IUT/S4_Image/ProjetOCR/include/Classe.h
 	"MyImage.h"
 	<vector>
+	<map>
+	<string>
 
-1362126767 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
+1362650392 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
 	<dirent.h>
 	<string>
 	<iostream>
+	<iomanip>
+	"utils.h"
 	"OCR.h"
 
-1362094567 /home/sohel/IUT/S4_Image/ProjetOCR/include/OCR.h
+1362644479 /home/sohel/IUT/S4_Image/ProjetOCR/include/OCR.h
 	<stdlib.h>
 	<vector>
 	"Classe.h"
@@ -69,4 +73,15 @@
 
 1362580803 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Zoning.cpp
 	"caracteristique/Zoning.h"
+
+1362646434 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/utils.cpp
+	"utils.h"
+	<sstream>
+
+1362645673 /home/sohel/IUT/S4_Image/ProjetOCR/include/utils.h
+	<algorithm>
+	<string>
+	<vector>
+	<dirent.h>
+	<sys/types.h>
 

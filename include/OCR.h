@@ -16,9 +16,10 @@ struct Correspondance{
 class OCR
 {
     public:
-        static OCR *    instance();
-        static void     destroy();
-        Correspondance getCorrespondance(MyImage & image);
+        static OCR *        instance();
+        static void         destroy();
+        Correspondance      getCorrespondance(MyImage & image) const;
+        void               displayConfusionMatrix() const;
 
     private:
         OCR();

@@ -25,6 +25,9 @@ int main(int argc, char ** argv)
          << " taux = " << 100-c.diffMin << "%"<< endl
          << " classe = " << c.classe->nom << endl;
 
-    a.display();
+    //a.display();
+
+
+    OCR::instance()->displayConfusionMatrix();
     return EXIT_SUCCESS;
 }

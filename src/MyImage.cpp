@@ -6,12 +6,14 @@
 using namespace cimg_library;
 using namespace std;
 
-MyImage::MyImage(std::string filename)
+MyImage::MyImage(std::string filename,int largeur, int hauteur )
 : _cimg(filename.c_str())
 {
     _filename = filename;
     toBinary();
     _cimg.autocrop(255);
+        _cimg.resize(largeur,hauteur);
+
     loadCaracteristiques();
 }
 
@@ -51,13 +53,13 @@ void MyImage::toBinary(){
 
 
 
-float MyImage::compare(const MyImage & i){
-    MyImage tmp(i,_cimg.width() , _cimg.height());
+float MyImage::compare(const MyImage & img) const{
+    //MyImage tmp(i,_cimg.width() , _cimg.height());
     int diff = 0; //( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) );
     for(int i=0; i < (signed)_caracteristiques.size() ; i++)
-        diff += _caracteristiques[i]->compare(tmp._caracteristiques[i]);
+        diff += _caracteristiques[i]->compare(img._caracteristiques[i]);
 
-    return diff;//*compareZoning(i);//*(isoDiff == 0 ? 1 : 1+isoDiff/50) ;
+    return diff;
 }
 
 void MyImage::generateCaracteristiques(){
@@ -66,18 +68,23 @@ void MyImage::generateCaracteristiques(){
 
 }
 void MyImage::loadCaracteristiques(){
-    //_caracteristiques.push_back( new  Histogramme(&_cimg, HISTOGRAMME_HORIZONTAL));
-    //_caracteristiques.push_back( new  Histogramme(&_cimg, HISTOGRAMME_VERTICAL));
+    _caracteristiques.push_back( new  Histogramme(&_cimg, HISTOGRAMME_HORIZONTAL));
+    _caracteristiques.push_back( new  Histogramme(&_cimg, HISTOGRAMME_VERTICAL));
     _caracteristiques.push_back( new  Zoning(&_cimg));
 
 
     generateCaracteristiques();
 }
 
-void MyImage::display(){
+void MyImage::display() const{
     _cimg.display();
 
 }
+
+bool MyImage::operator==(const MyImage & i) const{
+    return _filename == i._filename;
+}
+
 
 MyImage::~MyImage(){
     for(int i=0; i < (signed)_caracteristiques.size() ; i++)

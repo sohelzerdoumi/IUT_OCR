@@ -1,5 +1,9 @@
 #ifndef MYIMAGE_H
 #define MYIMAGE_H
+
+#define IMG_HAUTEUR 30
+#define IMG_LARGEUR 30
+
 #include "CImg.h"
 
 #include <string>
@@ -12,12 +16,13 @@ class MyImage
 {
     public:
         MyImage(const MyImage & i);
-        MyImage(const MyImage & i,int largeur, int hauteur);
-        MyImage(std::string filename);
+        MyImage(const MyImage & i,int largeur = IMG_LARGEUR, int hauteur = IMG_HAUTEUR);
+        MyImage(std::string filename,int largeur = IMG_LARGEUR, int hauteur = IMG_HAUTEUR);
         virtual ~MyImage();
 
-        float compare(const MyImage & i);
-        void display();
+        bool operator==(const MyImage & i) const;
+        float compare(const MyImage & img) const;
+        void display() const;
     private:
         std::vector<Caracteristique *>  _caracteristiques;
         void                        generateCaracteristiques();
