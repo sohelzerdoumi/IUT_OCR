@@ -41,15 +41,19 @@
 		<Unit filename="include/MyImage.h" />
 		<Unit filename="include/OCR.h" />
 		<Unit filename="include/caracteristique/Caracteristique.h" />
-		<Unit filename="include/caracteristique/Histogramme.h" />
+		<Unit filename="include/caracteristique/Profil.h" />
+		<Unit filename="include/caracteristique/Vecteur.h" />
 		<Unit filename="include/caracteristique/Zoning.h" />
+		<Unit filename="include/utils.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Classe.cpp" />
 		<Unit filename="src/MyImage.cpp" />
 		<Unit filename="src/OCR.cpp" />
 		<Unit filename="src/caracteristique/Caracteristique.cpp" />
-		<Unit filename="src/caracteristique/Histogramme.cpp" />
+		<Unit filename="src/caracteristique/Profil.cpp" />
+		<Unit filename="src/caracteristique/Vecteur.cpp" />
 		<Unit filename="src/caracteristique/Zoning.cpp" />
+		<Unit filename="src/utils.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

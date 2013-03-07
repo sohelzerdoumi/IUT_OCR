@@ -68,8 +68,7 @@ void MyImage::generateCaracteristiques(){
 
 }
 void MyImage::loadCaracteristiques(){
-    _caracteristiques.push_back( new  Histogramme(&_cimg, HISTOGRAMME_HORIZONTAL));
-    _caracteristiques.push_back( new  Histogramme(&_cimg, HISTOGRAMME_VERTICAL));
+    _caracteristiques.push_back( new  Profil(&_cimg));
     _caracteristiques.push_back( new  Zoning(&_cimg));
 
 

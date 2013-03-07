@@ -84,7 +84,6 @@ void  OCR::displayConfusionMatrix() const{
         for(int j=0; j < 10 ; j++){
              if( rapport.find( intToString(j)) ==rapport.end() ){
                 cout << "|  0 " ;
-                fail++;
              }else{
 
                 if( _classes[i]->nom == intToString(j) ){
