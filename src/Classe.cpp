@@ -31,7 +31,8 @@ float Classe::getCorrespondanceMin(MyImage & image) const{
     float correspondance = 10000000;
     float tmp_corresp = 10000000;
     for(int i=0; i < (signed)_images.size() ;i++){
-        if( !(image == *_images[i]) ){
+        if( !(image == *_images[i]) )
+        {
             tmp_corresp = _images[i]->compare(image);
             correspondance = ( tmp_corresp < correspondance ) ? tmp_corresp : correspondance;
         }

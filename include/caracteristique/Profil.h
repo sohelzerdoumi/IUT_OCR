@@ -12,11 +12,9 @@ class Profil : public Caracteristique
         Profil(cimg_library::CImg<int>  *  cimg);
         virtual ~Profil();
         void generate();
-        Vecteur getVector() const;
 
     private:
         int                     _data_quantity;
-        Vecteur                 _vecteur;
 
     public:
         float                   getPonderation() const ;

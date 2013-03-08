@@ -23,11 +23,12 @@ class MyImage
         bool operator==(const MyImage & i) const;
         float compare(const MyImage & img) const;
         void display() const;
+        cimg_library::CImg<int>        _cimg;
+
     private:
         std::vector<Caracteristique *>  _caracteristiques;
         void                        generateCaracteristiques();
         void                        loadCaracteristiques();
-        cimg_library::CImg<int>        _cimg;
 //        Histogramme hHorizontal;
 //        Histogramme hVertical;
         std::string                 _filename;

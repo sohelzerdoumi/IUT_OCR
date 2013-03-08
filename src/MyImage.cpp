@@ -12,7 +12,7 @@ MyImage::MyImage(std::string filename,int largeur, int hauteur )
     _filename = filename;
     toBinary();
     _cimg.autocrop(255);
-        _cimg.resize(largeur,hauteur);
+    _cimg.resize(largeur,hauteur);
 
     loadCaracteristiques();
 }
@@ -55,7 +55,7 @@ void MyImage::toBinary(){
 
 float MyImage::compare(const MyImage & img) const{
     //MyImage tmp(i,_cimg.width() , _cimg.height());
-    int diff = 0; //( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) );
+    float diff = 0; //( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) );
     for(int i=0; i < (signed)_caracteristiques.size() ; i++)
         diff += _caracteristiques[i]->compare(img._caracteristiques[i]);
 
@@ -68,8 +68,10 @@ void MyImage::generateCaracteristiques(){
 
 }
 void MyImage::loadCaracteristiques(){
-    _caracteristiques.push_back( new  Profil(&_cimg));
-    _caracteristiques.push_back( new  Zoning(&_cimg));
+    //_caracteristiques.push_back( new  Profil(&_cimg));
+    //_caracteristiques.push_back( new  Isoperimetre(&_cimg));
+    //_caracteristiques.push_back( new  Zoning(&_cimg));
+    _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
 
 
     generateCaracteristiques();

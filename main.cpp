@@ -20,7 +20,7 @@ int main(int argc, char ** argv)
     #endif
 
 
-    Correspondance c = OCR::instance()->getCorrespondance(a);
+   Correspondance c = OCR::instance()->getCorrespondance(a);
     cout << "Correspondance : " << endl
          << " taux = " << 100-c.diffMin << "%"<< endl
          << " classe = " << c.classe->nom << endl;
@@ -29,5 +29,10 @@ int main(int argc, char ** argv)
 
 
     OCR::instance()->displayConfusionMatrix();
+
+    a.display();
+    //a._cimg.dilate(1).display();
+
+
     return EXIT_SUCCESS;
 }

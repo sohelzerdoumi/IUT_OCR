@@ -35,7 +35,6 @@ float Vecteur::compareEuclidienne( const std::vector<float> & vec, float pondera
         distance += pow(abs(vec[i] - (*this)[i]) , 2)*ponderation;
     }
     distance = sqrt(distance);
-
     return distance;
 }
 

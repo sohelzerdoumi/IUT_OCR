@@ -6,20 +6,17 @@
 #include <stdlib.h>
 #include <iostream>
 
-#define SEUIL_DIFF_HISTOGRAMME_MAX 0.30f
-
 using namespace std;
 using namespace cimg_library;
 
 
-Profil::Profil(cimg_library::CImg<int>  *  cimg) //, HISTOGRAMME_TYPE typeHistogramme)
-: Caracteristique( cimg , "PROFIL" )
+Profil::Profil(cimg_library::CImg<int>  *  cimg)
+: Caracteristique( cimg , "PROFIL", PONDERATION_PROFIL )
 {
     _data_quantity  = 0;
 }
 
 void Profil::generate(){
-    //cout << "Histo:gen " << _cimg << " " << _cimg->width() << " " << _cimg->height() << endl;
     _data_quantity = 0;
     _vecteur.clear();
     int * currentPixel;
@@ -27,33 +24,34 @@ void Profil::generate(){
     int largeur = _cimg->width();
     int hauteur =  _cimg->height();
 
+    /*
+     *  Profil Horiontal
+     */
 
     for(int c = 0; c < largeur ; c++ ){
         tmp_int = 0;
 
         for(int l = 0 ; l < hauteur ; l++){
             currentPixel = _cimg->data(c,l);
-            tmp_int += (currentPixel[0] /*+ currentPixel[1] + currentPixel[2]*/) < SEUIL;
+            tmp_int += (currentPixel[0]  < SEUIL );
         }
         _vecteur.push_back(tmp_int);
         _data_quantity += tmp_int;
     }
 
+     /*
+     * Profil Vertical
+     */
     for(int l = 0 ; l < hauteur ; l++){
         tmp_int = 0;
         for(int c = 0; c < largeur ; c++ ){
             currentPixel = _cimg->data(c,l);
-            tmp_int += (currentPixel[0] /*+ currentPixel[1] + currentPixel[2]*/) < SEUIL;
+            tmp_int += (currentPixel[0] < SEUIL );
         }
         _vecteur.push_back(tmp_int);
     }
 
 
-}
-
-
-Vecteur Profil::getVector() const{
-    return _vecteur;
 }
 
 Profil::~Profil() {}

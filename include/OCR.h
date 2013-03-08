@@ -19,7 +19,7 @@ class OCR
         static OCR *        instance();
         static void         destroy();
         Correspondance      getCorrespondance(MyImage & image) const;
-        void               displayConfusionMatrix() const;
+        void                displayConfusionMatrix() const;
 
     private:
         OCR();
