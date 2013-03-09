@@ -2,6 +2,7 @@
 #define CARACTERISTIQUE_H
 #include "CImg.h"
 #include "Vecteur.h"
+#include <vector>
 #include <string>
 
 class Caracteristique
@@ -9,12 +10,13 @@ class Caracteristique
     public:
         /** Default constructor */
         Caracteristique(const Caracteristique & c);
+        Caracteristique(const std::vector<const Caracteristique*> & caracteristiques);
         Caracteristique(cimg_library::CImg<int>  *  cimg, const std::string & nomCarateristique, const float & ponderationCaracteristique = 1.0f );
         virtual ~Caracteristique();
 
         const std::string           nom;
         const float                 ponderation;
-        virtual void                generate() = 0;
+        virtual void                generate();
         virtual float               compare( const Caracteristique * c) const;
 
         virtual Vecteur             getVector() const;

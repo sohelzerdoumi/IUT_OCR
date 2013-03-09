@@ -7,6 +7,9 @@
 class Vecteur : public std::vector<float>
 {
     public:
+        Vecteur();
+        Vecteur(const Vecteur & v);
+        Vecteur( const std::vector<const Vecteur*> vecteurs);
         float compare( const std::vector<float> & vec, float ponderation = 1 ) const;
     protected:
         float compareManhattan( const std::vector<float> & vec, float ponderation = 1 ) const;

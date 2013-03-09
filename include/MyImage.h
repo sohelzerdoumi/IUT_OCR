@@ -16,6 +16,7 @@ class MyImage
 {
     public:
         MyImage(const MyImage & i);
+        MyImage(const std::vector<const MyImage*> & images);
         MyImage(const MyImage & i,int largeur = IMG_LARGEUR, int hauteur = IMG_HAUTEUR);
         MyImage(std::string filename,int largeur = IMG_LARGEUR, int hauteur = IMG_HAUTEUR);
         virtual ~MyImage();

@@ -5,12 +5,12 @@
 	"MyImage.h"
 	"OCR.h"
 
-1362779984 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
+1362785207 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
 	"MyImage.h"
 	<cmath>
 	<iostream>
 
-1362757422 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
+1362784596 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
 	"CImg.h"
 	<string>
 	<vector>
@@ -25,19 +25,19 @@
 1362576818 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
 	"CImg.h"
 
-1362779099 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
+1362787419 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
 	<dirent.h>
 	<iostream>
 	"Classe.h"
 	"OCR.h"
 
-1362643257 /home/sohel/IUT/S4_Image/ProjetOCR/include/Classe.h
+1362787381 /home/sohel/IUT/S4_Image/ProjetOCR/include/Classe.h
 	"MyImage.h"
 	<vector>
 	<map>
 	<string>
 
-1362778977 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
+1362787431 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
 	<dirent.h>
 	<string>
 	<iostream>
@@ -45,17 +45,18 @@
 	"utils.h"
 	"OCR.h"
 
-1362778663 /home/sohel/IUT/S4_Image/ProjetOCR/include/OCR.h
+1362787316 /home/sohel/IUT/S4_Image/ProjetOCR/include/OCR.h
 	<stdlib.h>
 	<vector>
 	"Classe.h"
 
-1362774307 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Caracteristique.cpp
+1362786549 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Caracteristique.cpp
 	"caracteristique/Caracteristique.h"
 
-1362780028 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Caracteristique.h
+1362785235 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Caracteristique.h
 	"CImg.h"
 	"Vecteur.h"
+	<vector>
 	<string>
 	"Profil.h"
 	"Zoning.h"
@@ -71,10 +72,10 @@
 	<stdlib.h>
 	<iostream>
 
-1362774342 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Zoning.h
+1362783617 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Zoning.h
 	"Caracteristique.h"
 
-1362774247 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Zoning.cpp
+1362783897 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Zoning.cpp
 	"caracteristique/Zoning.h"
 
 1362646434 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/utils.cpp
@@ -88,18 +89,18 @@
 	<dirent.h>
 	<sys/types.h>
 
-1362778561 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Vecteur.cpp
+1362786969 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Vecteur.cpp
 	"caracteristique/Vecteur.h"
 	<cmath>
 	<iostream>
 
-1362676704 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Vecteur.h
+1362786649 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Vecteur.h
 	<vector>
 
 1362775677 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Profil.h
 	"Caracteristique.h"
 
-1362777021 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Profil.cpp
+1362783792 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Profil.cpp
 	"caracteristique/Profil.h"
 	<cmath>
 	<stdlib.h>
@@ -108,7 +109,7 @@
 1362774357 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Isoperimetre.h
 	"Caracteristique.h"
 
-1362779467 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Isoperimetre.cpp
+1362783033 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Isoperimetre.cpp
 	"caracteristique/Isoperimetre.h"
 	<iostream>
 	<cmath>
@@ -116,6 +117,6 @@
 1362780126 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/MomentGeometrique.h
 	"Caracteristique.h"
 
-1362780463 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/MomentGeometrique.cpp
+1362783996 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/MomentGeometrique.cpp
 	<caracteristique/MomentGeometrique.h>
 

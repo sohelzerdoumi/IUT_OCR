@@ -2,9 +2,7 @@
 #define ZONING_H
 #include "Caracteristique.h"
 
-#define ZONING_LARGEUR 5
-#define ZONING_HAUTEUR 5
-#define ZONING_DIFF_MAX 100
+
 
 class Zoning : public Caracteristique
 {
@@ -14,8 +12,6 @@ class Zoning : public Caracteristique
         /** Default destructor */
         virtual ~Zoning();
         virtual void                    generate();
-    protected:
-        double                          _zone[ZONING_LARGEUR][ZONING_HAUTEUR];
 
 };
 

@@ -17,6 +17,28 @@ MyImage::MyImage(std::string filename,int largeur, int hauteur )
     loadCaracteristiques();
 }
 
+MyImage::MyImage(const std::vector<const MyImage*> & images){
+    if( images.size() == 0)
+        return;
+    vector<const Caracteristique *> caracteristiques;
+
+    for(int idCaracteristique =0; idCaracteristique < (signed)images[0]->_caracteristiques.size() ; idCaracteristique++ ){
+        caracteristiques.clear();
+        for(int idImage = 0; idImage < (signed)images.size() ; idImage++){
+            caracteristiques.push_back( images[idImage]->_caracteristiques[idCaracteristique] );
+        }
+        _caracteristiques.push_back( new Caracteristique( caracteristiques ) ) ;
+    }
+
+
+
+}
+
+
+
+
+
+
 MyImage::MyImage(const MyImage & i, int largeur, int hauteur)
 : _cimg(i._filename.c_str())
 {
@@ -68,9 +90,9 @@ void MyImage::generateCaracteristiques(){
 
 }
 void MyImage::loadCaracteristiques(){
-    //_caracteristiques.push_back( new  Profil(&_cimg));
-    //_caracteristiques.push_back( new  Isoperimetre(&_cimg));
-    //_caracteristiques.push_back( new  Zoning(&_cimg));
+    _caracteristiques.push_back( new  Profil(&_cimg));
+    _caracteristiques.push_back( new  Isoperimetre(&_cimg));
+    _caracteristiques.push_back( new  Zoning(&_cimg));
     _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
 
 

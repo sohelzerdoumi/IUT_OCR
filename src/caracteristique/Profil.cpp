@@ -1,6 +1,6 @@
 #include "caracteristique/Profil.h"
 
-#define PONDERATION_PROFIL 1.0f
+#define PONDERATION_PROFIL 10.0f
 
 #include <cmath>
 #include <stdlib.h>
@@ -35,7 +35,7 @@ void Profil::generate(){
             currentPixel = _cimg->data(c,l);
             tmp_int += (currentPixel[0]  < SEUIL );
         }
-        _vecteur.push_back(tmp_int);
+        _vecteur.push_back(tmp_int*100.0/hauteur);
         _data_quantity += tmp_int;
     }
 
@@ -48,7 +48,7 @@ void Profil::generate(){
             currentPixel = _cimg->data(c,l);
             tmp_int += (currentPixel[0] < SEUIL );
         }
-        _vecteur.push_back(tmp_int);
+        _vecteur.push_back(tmp_int*100.0/largeur);
     }
 
 

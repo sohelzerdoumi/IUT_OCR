@@ -11,10 +11,12 @@ class Classe
         Classe(const std::string & nomClasse);
         virtual ~Classe();
         const std::string  nom;
-        float getCorrespondanceMin(MyImage & image) const;
+        float getCorrespondanceMin(const MyImage & image) const;
+        float getCorrespondanceMean(const MyImage & image) const;
         std::map<std::string, int>  test() const;
     private:
-        std::vector<MyImage *>   _images;
+        std::vector<const MyImage *>   _images;
+        MyImage *                _image_mean;
         void addImage(const std::string & filename);
         std::string  pathDir;
 

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-#define PONDERATION_ISOPERIMETRE 100000.0f
+#define PONDERATION_ISOPERIMETRE 1.0f
 
 using namespace std;
 

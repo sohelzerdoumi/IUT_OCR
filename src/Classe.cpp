@@ -7,7 +7,7 @@
 using namespace std;
 
 Classe::Classe(const std::string & nomClasse)
-: nom ( nomClasse)
+: nom ( nomClasse), _image_mean( NULL )
 {
     DIR	*  currentDir;
     struct dirent *	subDir;
@@ -22,12 +22,16 @@ Classe::Classe(const std::string & nomClasse)
         if( tmp_dirName != "." && tmp_dirName  != ".." )
             addImage(tmp_dirName);
     }
+    _image_mean = new MyImage( _images );
 
 }
 
-Classe::~Classe(){}
+Classe::~Classe(){
+    if( _image_mean != NULL)
+        delete _image_mean ;
+}
 
-float Classe::getCorrespondanceMin(MyImage & image) const{
+float Classe::getCorrespondanceMin(const MyImage & image) const{
     float correspondance = 10000000;
     float tmp_corresp = 10000000;
     for(int i=0; i < (signed)_images.size() ;i++){
@@ -42,8 +46,12 @@ float Classe::getCorrespondanceMin(MyImage & image) const{
     return correspondance;
 }
 
+float Classe::getCorrespondanceMean(const MyImage & image) const{
+    return _image_mean->compare(image);
+}
+
 void Classe::addImage(const std::string & filename){
-    MyImage * image = new MyImage( pathDir + "/" + filename );
+    const MyImage * image = new MyImage( pathDir + "/" + filename );
     _images.push_back( image);
 
 }

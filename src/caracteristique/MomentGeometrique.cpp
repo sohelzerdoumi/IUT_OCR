@@ -13,8 +13,8 @@ void MomentGeometrique::generate(){
 
     int * currentPixel;
     int surface = 0;
-    int hauteur_moyenne = 0;
-    int largeur_moyenne = 0;
+    float hauteur_moyenne = 0;
+    float largeur_moyenne = 0;
 
     int largeur = _cimg->width();
     int hauteur =  _cimg->height();
@@ -31,8 +31,8 @@ void MomentGeometrique::generate(){
         }
     }
 
-    hauteur_moyenne /= surface;
-    largeur_moyenne /= surface;
+    hauteur_moyenne = (hauteur_moyenne/surface) *100.0f/hauteur ;
+    largeur_moyenne = (largeur_moyenne/surface) *100.0f/largeur ;
 
     _vecteur.push_back(hauteur_moyenne);
     _vecteur.push_back(largeur_moyenne);
