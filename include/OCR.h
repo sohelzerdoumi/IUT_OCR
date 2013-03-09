@@ -9,9 +9,9 @@
 
 struct Correspondance{
     float diffMin;
-    Classe * classe;
+    std::string nomClasse;
 
-} ;
+};
 
 class OCR
 {

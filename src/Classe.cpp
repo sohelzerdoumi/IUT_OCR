@@ -1,4 +1,4 @@
-#include <dirent.h>
+#include <utils.h>
 #include <iostream>
 
 #include "Classe.h"
@@ -9,19 +9,13 @@ using namespace std;
 Classe::Classe(const std::string & nomClasse)
 : nom ( nomClasse), _image_mean( NULL )
 {
-    DIR	*  currentDir;
-    struct dirent *	subDir;
-            pathDir = PATH_BASE;
-            pathDir += "/";
-            pathDir += nom  ;
-    currentDir = opendir( pathDir.c_str());
+    pathDir = PATH_BASE;
+    pathDir += "/";
+    pathDir += nom  ;
 
-    std::string tmp_dirName;
-    while ( (subDir = readdir(currentDir)) !=  NULL ){
-        tmp_dirName =subDir->d_name;
-        if( tmp_dirName != "." && tmp_dirName  != ".." )
-            addImage(tmp_dirName);
-    }
+    std::vector <std::string> dirs =  read_directory( pathDir);
+    for(int i = 0; i < (signed)dirs.size() ;i++)
+            addImage( dirs[i]);
     _image_mean = new MyImage( _images );
 
 }
@@ -60,7 +54,7 @@ map<string,int>   Classe::test() const{
     map<string,int> rapport;
     string nomClasse;
     for(int i=0; i <  (signed)_images.size() ;i++){
-        nomClasse = OCR::instance()->getCorrespondance( *_images[i]).classe->nom;
+        nomClasse = OCR::instance()->getCorrespondance( *_images[i]).nomClasse;
         if( rapport.find(nomClasse) != rapport.end())
             rapport[nomClasse]++;
         else

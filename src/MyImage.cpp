@@ -1,4 +1,5 @@
 #include "MyImage.h"
+#include "utils.h"
 
 #include <cmath>
 #include <iostream>
@@ -90,10 +91,16 @@ void MyImage::generateCaracteristiques(){
 
 }
 void MyImage::loadCaracteristiques(){
-    _caracteristiques.push_back( new  Profil(&_cimg));
-    _caracteristiques.push_back( new  Isoperimetre(&_cimg));
-    _caracteristiques.push_back( new  Zoning(&_cimg));
-    _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
+    if( getConfigValueBoolean("ocr.caracteristique.courbure.enable")   )
+        _caracteristiques.push_back( new  Courbure(&_cimg));
+    if( getConfigValueBoolean("ocr.caracteristique.profil.enable")  )
+        _caracteristiques.push_back( new  Profil(&_cimg));
+    if( getConfigValueBoolean("ocr.caracteristique.isoperimetre.enable")   )
+        _caracteristiques.push_back( new  Isoperimetre(&_cimg));
+    if( getConfigValueBoolean("ocr.caracteristique.zoning.enable")   )
+        _caracteristiques.push_back( new  Zoning(&_cimg));
+    if( getConfigValueBoolean("ocr.caracteristique.momentgeometrique.enable") )
+        _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
 
 
     generateCaracteristiques();

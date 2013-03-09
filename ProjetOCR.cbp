@@ -37,10 +37,14 @@
 			<Add option="-lX11" />
 			<Add option="-lpthread" />
 		</Linker>
+		<Unit filename="config.txt" />
 		<Unit filename="include/Classe.h" />
 		<Unit filename="include/MyImage.h" />
 		<Unit filename="include/OCR.h" />
 		<Unit filename="include/caracteristique/Caracteristique.h" />
+		<Unit filename="include/caracteristique/Courbure.h" />
+		<Unit filename="include/caracteristique/Isoperimetre.h" />
+		<Unit filename="include/caracteristique/MomentGeometrique.h" />
 		<Unit filename="include/caracteristique/Profil.h" />
 		<Unit filename="include/caracteristique/Vecteur.h" />
 		<Unit filename="include/caracteristique/Zoning.h" />
@@ -50,6 +54,9 @@
 		<Unit filename="src/MyImage.cpp" />
 		<Unit filename="src/OCR.cpp" />
 		<Unit filename="src/caracteristique/Caracteristique.cpp" />
+		<Unit filename="src/caracteristique/Courbure.cpp" />
+		<Unit filename="src/caracteristique/Isoperimetre.cpp" />
+		<Unit filename="src/caracteristique/MomentGeometrique.cpp" />
 		<Unit filename="src/caracteristique/Profil.cpp" />
 		<Unit filename="src/caracteristique/Vecteur.cpp" />
 		<Unit filename="src/caracteristique/Zoning.cpp" />

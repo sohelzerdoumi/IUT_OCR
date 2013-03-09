@@ -2,6 +2,7 @@
 #define CARACTERISTIQUE_H
 #include "CImg.h"
 #include "Vecteur.h"
+#include <utils.h>
 #include <vector>
 #include <string>
 
@@ -30,5 +31,6 @@ class Caracteristique
 #include "Profil.h"
 #include "Zoning.h"
 #include "Isoperimetre.h"
-#include "caracteristique/MomentGeometrique.h"
+#include "Courbure.h"
+#include "MomentGeometrique.h"
 #endif // CARACTERISTIQUE_H

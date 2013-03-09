@@ -1,8 +1,37 @@
 #include "utils.h"
+#include <libconfig.h++>
 
+#include <iostream>
 #include <sstream>
-
+#define CONFIG_FILE "config.txt"
+using namespace libconfig;
 using namespace std;
+
+Config cfg;
+void loadConfigFile(){
+  cfg.readFile(CONFIG_FILE);
+}
+
+bool getConfigValueBoolean( const string & variable ){
+    bool out = false;
+    cfg.lookupValue(variable, out);
+    return out;
+}
+float getConfigValueFloat( const string & variable ){
+    float out = 0;
+    cfg.lookupValue(variable, out);
+    return out;
+}
+int getConfigValueInt( const string & variable ){
+    int out = 0;
+    cfg.lookupValue(variable, out);
+    return out;
+}
+string getConfigValueString( const string & variable ){
+    string out;
+    cfg.lookupValue(variable, out);
+    return out;
+}
 
 
 string intToString(int nombre){

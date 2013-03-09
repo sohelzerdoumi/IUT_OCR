@@ -29,21 +29,13 @@ OCR::OCR()
     for(int i = 0; i < (signed)dirs.size() ;i++){
             _classes.push_back( new Classe( dirs[i]) );
 
-    }/*
-    currentDir = opendir( pathDir.c_str());
+    }
 
-    std::string tmp_dirName;
-    while ( (subDir = readdir(currentDir)) !=  NULL ){
-        tmp_dirName =subDir->d_name;
-        if( tmp_dirName != "." && tmp_dirName  != ".." )
-            / Creation /
-            _classes.push_back( new Classe( tmp_dirName) );
-    }*/
 }
 
 
 Correspondance OCR::getCorrespondance(const MyImage & image) const{
-    Correspondance c={0,0};
+    Correspondance c={0,""};
     float differenceMin = 100000000;
     float tmp_diff = 10000000;
     int   id_diffMin = -1;
@@ -55,10 +47,9 @@ Correspondance OCR::getCorrespondance(const MyImage & image) const{
             id_diffMin = i;
         }
     }
-
     if( id_diffMin != -1){
         c.diffMin = differenceMin;
-        c.classe  = _classes[id_diffMin];
+        c.nomClasse  =  (differenceMin < getConfigValueInt("ocr.difference_max") ) ? _classes[id_diffMin]->nom : "?";
     }
 
     return c;
@@ -67,11 +58,12 @@ Correspondance OCR::getCorrespondance(const MyImage & image) const{
 void  OCR::displayConfusionMatrix() const{
     int success = 0;
     int fail    = 0;
+    int nonReconnu = 0;
     std::map<string, int> rapport;
     /*
      *  Affichage en-tete tableau
      */
-     cout << "    |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9  " << endl;
+     cout << "    |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9  |  ?" << endl;
      cout << "-------------------------------------------------------" << endl;
 
     /*
@@ -104,9 +96,18 @@ void  OCR::displayConfusionMatrix() const{
                 }
 
              }
-
-
         }
+
+                            nonReconnu += rapport["?"] ;
+                            cout << "| " ;
+                            cout << "\e[1m\e[32m\e[44m";
+                            cout <<  setw(2) ;
+                            cout << rapport["?"] << " ";
+                            cout << "\33[0m" ;
+
+
+
+
         cout << endl;
 
 
@@ -115,9 +116,10 @@ void  OCR::displayConfusionMatrix() const{
 
 
         cout << "Reconnu : " << success << endl
-             << "Non Reconnu : " << fail << endl;
-
-        cout << "Reconnaissance : " << success*100/(success+fail) << " %" << endl;
+             << "Non reconnu : " << nonReconnu << endl
+             << "Erreurs: " << fail << endl
+             << "Taux d'erreurs: " << fail*100/(success+fail+nonReconnu) << " %" << endl
+             << "Reconnaissance : " << success*100/(success+fail+nonReconnu) << " %" << endl;
 
 
 

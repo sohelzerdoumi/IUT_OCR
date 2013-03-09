@@ -2,7 +2,6 @@
 #include <cmath>
 #include <iostream>
 
-
 using namespace std;
 
 Vecteur::Vecteur(): vector() {}

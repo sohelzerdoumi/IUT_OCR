@@ -17,7 +17,6 @@ class Profil : public Caracteristique
         int                     _data_quantity;
 
     public:
-        float                   getPonderation() const ;
         const int *             getData();
         int                     getSize();
         int                     getDataQuantity();
