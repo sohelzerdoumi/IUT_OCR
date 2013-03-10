@@ -25,17 +25,21 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="extlib/gmp-5.1.1/.libs/libgmp.so" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="include" />
+			<Add directory="extlib/gmp-5.1.1" />
 		</Compiler>
 		<Linker>
 			<Add option="-lsfml-window -lsfml-system -lsfml-graphics    -lsqlite3" />
 			<Add option="-lX11" />
 			<Add option="-lpthread" />
+			<Add option="-lconfig++" />
+			<Add library="extlib/gmp-5.1.1/.libs/libgmp.so" />
 		</Linker>
 		<Unit filename="config.txt" />
 		<Unit filename="include/Classe.h" />

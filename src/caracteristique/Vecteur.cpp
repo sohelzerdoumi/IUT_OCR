@@ -1,4 +1,6 @@
 #include "caracteristique/Vecteur.h"
+#include "utils.h"
+#include "gmpxx.h"
 #include <cmath>
 #include <iostream>
 
@@ -23,8 +25,13 @@ Vecteur::Vecteur( const std::vector<const Vecteur*> vecteurs): vector(){
 }
 
 float Vecteur::compare( const std::vector<float> & vec, float ponderation ) const{
-    return compareEuclidienne(vec, ponderation);
-    //return compareMinkowski(vec);
+    string mode = getConfigValueString("ocr.vecteur.mode");
+    if( mode == "euclide")
+        return compareEuclidienne(vec, ponderation);
+
+    if( mode == "manhattan")
+        return compareEuclidienne(vec, ponderation);
+    return compareMinkowski(vec);
 }
 
 
@@ -56,12 +63,15 @@ float Vecteur::compareEuclidienne( const std::vector<float> & vec, float pondera
 
 
 float Vecteur::compareMinkowski( const std::vector<float> & vec, float ponderation ) const{
+    mpz_class distance = 0;
+    mpz_class tmpz = 0;
+
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
-    float distance = 0;
     for(int i=0; i < (signed) this->size() ; i++){
-        distance += pow(abs(vec[i] - (*this)[i]) , this->size())*ponderation;
+        mpz_ui_pow_ui( tmpz.get_mpz_t(),  abs(vec[i] - (*this)[i]),  this->size());
+        distance += tmpz;
     }
 
     distance = pow( distance , 1.0f/this->size() );

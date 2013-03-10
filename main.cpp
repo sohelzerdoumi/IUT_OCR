@@ -1,9 +1,9 @@
 #include <iostream>
 #include <iomanip>
-
 #include "MyImage.h"
 #include "OCR.h"
 #include "utils.h"
+#include "gmpxx.h"
 #include "extlib/SimpleOpt.h"
 #include "extlib/SimpleGlob.h"
 
@@ -23,6 +23,8 @@ CSimpleOpt::SOption g_rgOptions[] = {
 
 
 void ShowHelp(string filename){
+        mpz_class i;
+        i = 25*25;
         int option_width = 20;
         int description_dist = 10;
         cout    << " Utilisation :" << endl;
@@ -35,7 +37,14 @@ void ShowHelp(string filename){
         cout << setw(option_width) << "-f FILE, --file=FILE"
              << setw(description_dist) << ""
               << "Trouve le caractere correspondant à l'image" << endl;
+        //gmp_printf("%i", i);
+        mpz_ui_pow_ui(i.get_mpz_t(),250,50);
+        cout << i.get_mpz_t() << endl;;
 }
+
+
+
+
 
 int main(int argc, char ** argv)
 {

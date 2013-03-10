@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1362855562 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
+1362936856 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
 	<iostream>
 	<iomanip>
 	"MyImage.h"
 	"OCR.h"
 	"utils.h"
+	"gmpxx.h"
 	"extlib/SimpleOpt.h"
 	"extlib/SimpleGlob.h"
 
@@ -97,8 +98,9 @@
 	<dirent.h>
 	<sys/types.h>
 
-1362840392 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Vecteur.cpp
+1362915239 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Vecteur.cpp
 	"caracteristique/Vecteur.h"
+	"utils.h"
 	<cmath>
 	<iostream>
 
@@ -154,4 +156,33 @@
 	<wchar.h>
 	<crtdbg.h>
 	<assert.h>
+
+1360596554 source:/home/sohel/IUT/S4_Image/ProjetOCR/extlib/mini-gmp.c
+	<assert.h>
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"mini-gmp.h"
+
+1360596554 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/mini-gmp.h
+	<stddef.h>
+
+1362935805 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/gmp-5.1.1/gmp.h
+	<iosfwd>
+	<cstdio>
+	<cstddef>
+	<stddef.h>
+
+1360596554 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/gmp-5.1.1/gmpxx.h
+	<iosfwd>
+	<cstring>
+	<limits>
+	<utility>
+	<string>
+	<stdexcept>
+	<cfloat>
+	<gmp.h>
+	<type_traits>
 

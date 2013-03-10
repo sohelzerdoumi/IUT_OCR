@@ -33,6 +33,6 @@ ocr :
     };
     vecteur:
     {
-        mode = "euclide";
+        mode = "euclide"; // manhattan | euclide
     };
 };
