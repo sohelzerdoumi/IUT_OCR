@@ -1,16 +1,24 @@
 #include "utils.h"
-#include <libconfig.h++>
+#include "caracteristique/Caracteristique.h"
 
 #include <iostream>
 #include <sstream>
-#define CONFIG_FILE "config.txt"
 using namespace libconfig;
 using namespace std;
 
 Config cfg;
-void loadConfigFile(){
-  cfg.readFile(CONFIG_FILE);
+void loadConfigFile(const std::string & filename ){
+  cfg.readFile(filename.c_str());
 }
+
+template<typename T>
+void setConfigValue( const string & variable, const T & value ){
+        libconfig::Setting &setting = cfg.lookup(variable.c_str());
+        setting = value;
+}
+
+
+
 
 bool getConfigValueBoolean( const string & variable ){
     bool out = false;
@@ -20,6 +28,8 @@ bool getConfigValueBoolean( const string & variable ){
 float getConfigValueFloat( const string & variable ){
     float out = 0;
     cfg.lookupValue(variable, out);
+
+
     return out;
 }
 int getConfigValueInt( const string & variable ){

@@ -3,28 +3,32 @@
 #include "MyImage.h"
 #include "OCR.h"
 #include "utils.h"
-#include "gmpxx.h"
 #include "extlib/SimpleOpt.h"
 #include "extlib/SimpleGlob.h"
 
 using namespace std;
 
-enum { OPT_HELP, OPT_TEST, OPT_ARG, OPT_FILE };
+enum OPT_T{ OPT_FLAG, OPT_CONFIG_FILE,  OPT_ACTION, ACT_TEST, ACT_CORRESPONDANCE, ACT_HELP  };
 
 CSimpleOpt::SOption g_rgOptions[] = {
-    { OPT_TEST, ("--test"),     SO_NONE    }, // "-a"
-    { OPT_TEST, ("-t"),     SO_NONE    }, // "-a"
-    { OPT_FILE,  ("-f"),     SO_REQ_SEP }, // "-f ARG"
-    { OPT_FILE,  ("--file"),     SO_REQ_SEP }, // "-f ARG"
-    { OPT_HELP, ("-?"),     SO_NONE    }, // "-?"
-    { OPT_HELP, ("--help"), SO_NONE    }, // "--help"
-    SO_END_OF_OPTIONS                       // END
+    { OPT_CONFIG_FILE ,     ("-c"),         SO_REQ_SEP },
+    { OPT_CONFIG_FILE ,     ("--config"),   SO_REQ_SEP },
+
+    { OPT_FLAG ,            ("--display"),   SO_NONE },
+
+
+
+    { ACT_TEST ,            ("-t"),         SO_NONE    },
+    { ACT_TEST ,            ("--test"),     SO_NONE    },
+    { ACT_CORRESPONDANCE ,  ("-f"),         SO_REQ_SEP },
+    { ACT_CORRESPONDANCE ,  ("--file"),     SO_REQ_SEP },
+    { ACT_HELP ,            ("-h"),         SO_NONE    },
+    { ACT_HELP ,            ("--help"),     SO_NONE    },
+    SO_END_OF_OPTIONS
 };
 
 
 void ShowHelp(string filename){
-        mpz_class i;
-        i = 25*25;
         int option_width = 20;
         int description_dist = 10;
         cout    << " Utilisation :" << endl;
@@ -37,17 +41,22 @@ void ShowHelp(string filename){
         cout << setw(option_width) << "-f FILE, --file=FILE"
              << setw(description_dist) << ""
               << "Trouve le caractere correspondant à l'image" << endl;
-        //gmp_printf("%i", i);
-        mpz_ui_pow_ui(i.get_mpz_t(),250,50);
-        cout << i.get_mpz_t() << endl;;
 }
 
 
 
+void runTests(){
+    OCR::instance()->displayConfusionMatrix();
+}
 
 
 int main(int argc, char ** argv)
 {
+
+    OPT_T action = ACT_HELP;
+    string action_option ;
+    std::map<std::string, std::string> flags;
+
     loadConfigFile();
 
     CSimpleOpt args(argc, argv, g_rgOptions);
@@ -55,29 +64,56 @@ int main(int argc, char ** argv)
     while (args.Next()) {
         if (args.LastError() == SO_SUCCESS) {
             switch(args.OptionId() ) {
-                case OPT_HELP:
-                    ShowHelp(argv[0]);
-                    return 0;
+                case ACT_TEST:
+                    action = ACT_TEST ;
+                    break;
+                case ACT_CORRESPONDANCE:
+                    action = ACT_CORRESPONDANCE ;
+                    action_option = args.OptionArg();
+                    break;
+                case ACT_HELP:
+                    action = ACT_HELP;
                     break;
 
-                case OPT_TEST:
-                    OCR::instance()->displayConfusionMatrix();
-                    return 0;
-                    break;
-                case OPT_FILE:
-                    MyImage img(args.OptionArg() );
-                    Correspondance c = OCR::instance()->getCorrespondance(img);
-                    cout << "Correspondance : " << endl
-                         << " taux = " << 100-c.diffMin << "%"<< endl
-                         << " classe = " << c.nomClasse << endl;
-                    return 0;
+                case OPT_CONFIG_FILE:
+                    loadConfigFile(args.OptionArg());
                     break;
 
+                case OPT_FLAG:
+                    flags[ args.OptionText() ] = ""; //args.OptionArg();
+                    break;
             }
         }
 
     }
 
-    ShowHelp(argv[0]);
+    MyImage * img;
+    Correspondance  c;
+    switch( action ) {
+                case ACT_TEST:
+                    runTests();
+                    break;
+
+                case ACT_CORRESPONDANCE:
+                    img = new MyImage( action_option );
+                    c = OCR::instance()->getCorrespondance(*img);
+                    cout << "Correspondance : " << endl
+                         << " taux = " << 100-c.diffMin << "%"<< endl
+                         << " classe = " << c.nomClasse << endl;
+
+                    if( flags.find("--display") != flags.end()  )
+                        img->display();
+                    delete img;
+                    break;
+
+
+                case ACT_HELP:
+                default:
+                    ShowHelp(argv[0]);
+                    break;
+
+    }
+
+
     return EXIT_SUCCESS;
 }

@@ -40,7 +40,7 @@ Correspondance OCR::getCorrespondance(const MyImage & image) const{
     float tmp_diff = 10000000;
     int   id_diffMin = -1;
     for(int i=0; i < (signed)_classes.size() ;i++){
-        tmp_diff = _classes[i]->getCorrespondanceMean(image);
+        tmp_diff = _classes[i]->getCorrespondance(image);
         //cout << _classes[i]->nom << " " << tmp_diff << endl;
         if( tmp_diff < differenceMin  ){
             differenceMin = tmp_diff;

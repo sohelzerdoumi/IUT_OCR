@@ -11,7 +11,8 @@ class Classe
         Classe(const std::string & nomClasse);
         virtual ~Classe();
         const std::string  nom;
-        float getCorrespondanceMin(const MyImage & image) const;
+        float getCorrespondance(const MyImage & image) const;
+        float getCorrespondanceNormal(const MyImage & image) const;
         float getCorrespondanceMean(const MyImage & image) const;
         std::map<std::string, int>  test() const;
     private:

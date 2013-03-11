@@ -24,45 +24,50 @@ Vecteur::Vecteur( const std::vector<const Vecteur*> vecteurs): vector(){
     }
 }
 
-float Vecteur::compare( const std::vector<float> & vec, float ponderation ) const{
+
+float Vecteur::compare( const std::vector<float> & vec ) const{
     string mode = getConfigValueString("ocr.vecteur.mode");
     if( mode == "euclide")
-        return compareEuclidienne(vec, ponderation);
+        return compareEuclidienne(vec);
 
     if( mode == "manhattan")
-        return compareEuclidienne(vec, ponderation);
-    return compareMinkowski(vec);
+        return compareManhattan(vec);
+
+    if( mode == "minkowski")
+        return compareMinkowski(vec);
+    return 0;
 }
 
 
-float Vecteur::compareManhattan( const std::vector<float> & vec, float ponderation ) const{
+float Vecteur::compareManhattan( const std::vector<float> & vec ) const{
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
     float distance = 0;
     for(int i=0; i < (signed) this->size() ; i++){
-        distance += abs(vec[i] - (*this)[i])*ponderation;
+        distance += abs(vec[i] - (*this)[i]);
     }
 
     return distance;
 }
-float Vecteur::compareEuclidienne( const std::vector<float> & vec, float ponderation ) const{
+float Vecteur::compareEuclidienne( const std::vector<float> & vec ) const{
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
     float distance = 0;
     for(int i=0; i < (signed) this->size() ; i++){
-        if(pow(abs(vec[i] - (*this)[i]) , 2) >155*155)
+        if(pow(abs(vec[i] - (*this)[i]) , 2) > 150*150)
             return VECTOR_ERROR;
 
-        distance += pow(abs(vec[i] - (*this)[i]) , 2)*ponderation;
+        distance += pow(abs(vec[i] - (*this)[i]) , 2);
     }
-    distance = sqrt(distance)/this->size() ;
+    distance /= this->size() ;
+    distance = sqrt(distance) ;
     return distance;
 }
 
 
-float Vecteur::compareMinkowski( const std::vector<float> & vec, float ponderation ) const{
+float Vecteur::compareMinkowski( const std::vector<float> & vec ) const{
     mpz_class distance = 0;
     mpz_class tmpz = 0;
 
@@ -74,7 +79,6 @@ float Vecteur::compareMinkowski( const std::vector<float> & vec, float ponderati
         distance += tmpz;
     }
 
-    distance = pow( distance , 1.0f/this->size() );
-    return distance;
-
+    mpz_root( distance.get_mpz_t() , distance.get_mpz_t() ,this->size() );
+    return distance.get_si();
 }

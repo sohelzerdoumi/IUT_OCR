@@ -25,7 +25,18 @@ Classe::~Classe(){
         delete _image_mean ;
 }
 
-float Classe::getCorrespondanceMin(const MyImage & image) const{
+float  Classe::getCorrespondance(const MyImage & image) const{
+    string mode = getConfigValueString("ocr.classe.mode");
+    if( mode == "normal")
+        return getCorrespondanceNormal(image);
+
+    if( mode == "moyenne")
+        return getCorrespondanceMean(image);
+
+    return 0;
+}
+
+float Classe::getCorrespondanceNormal(const MyImage & image) const{
     float correspondance = 10000000;
     float tmp_corresp = 10000000;
     for(int i=0; i < (signed)_images.size() ;i++){

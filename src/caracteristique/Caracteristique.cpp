@@ -34,7 +34,7 @@ Caracteristique::~Caracteristique()
 void   Caracteristique::generate(){}
 
 float       Caracteristique::compare( const Caracteristique * c) const{
-    return getVector().compare(c->getVector(), ponderation );
+    return getVector().compare(c->getVector() );
 }
 
 Vecteur       Caracteristique::getVector() const{

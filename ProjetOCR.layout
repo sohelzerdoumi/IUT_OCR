@@ -7,25 +7,22 @@
 	<File name="include/caracteristique/Caracteristique.h" open="0" top="0" tabpos="0">
 		<Cursor position="437" topLine="0" />
 	</File>
-	<File name="include/caracteristique/Histogramme.h" open="0" top="0" tabpos="0">
-		<Cursor position="491" topLine="0" />
-	</File>
-	<File name="include/caracteristique/Zoning.h" open="1" top="1" tabpos="6">
+	<File name="include/caracteristique/Zoning.h" open="1" top="0" tabpos="5">
 		<Cursor position="91" topLine="0" />
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="600" topLine="0" />
+	<File name="main.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="708" topLine="0" />
 	</File>
 	<File name="src/MyImage.cpp" open="1" top="0" tabpos="2">
 		<Cursor position="1692" topLine="48" />
 	</File>
-	<File name="src/caracteristique/Caracteristique.cpp" open="1" top="0" tabpos="5">
+	<File name="src/caracteristique/Caracteristique.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="109" topLine="0" />
 	</File>
-	<File name="src/caracteristique/Histogramme.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="1800" topLine="54" />
+	<File name="src/caracteristique/Vecteur.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="1984" topLine="37" />
 	</File>
-	<File name="src/caracteristique/Zoning.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="952" topLine="0" />
+	<File name="src/caracteristique/Zoning.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="932" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

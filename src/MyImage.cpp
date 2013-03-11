@@ -77,12 +77,14 @@ void MyImage::toBinary(){
 
 
 float MyImage::compare(const MyImage & img) const{
-    //MyImage tmp(i,_cimg.width() , _cimg.height());
-    float diff = 0; //( hHorizontal.compare(tmp.hHorizontal ) + hVertical.compare(tmp.hVertical ) );
-    for(int i=0; i < (signed)_caracteristiques.size() ; i++)
-        diff += _caracteristiques[i]->compare(img._caracteristiques[i]);
+    float somme_ponderation = 0;
+    float diff = 0;
+    for(int i=0; i < (signed)_caracteristiques.size() ; i++){
+        diff += _caracteristiques[i]->compare(img._caracteristiques[i])*_caracteristiques[i]->ponderation;
+        somme_ponderation += _caracteristiques[i]->ponderation;
+    }
 
-    return diff;
+    return diff/somme_ponderation;
 }
 
 void MyImage::generateCaracteristiques(){

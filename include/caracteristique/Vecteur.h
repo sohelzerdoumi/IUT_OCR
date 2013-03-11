@@ -10,11 +10,11 @@ class Vecteur : public std::vector<float>
         Vecteur();
         Vecteur(const Vecteur & v);
         Vecteur( const std::vector<const Vecteur*> vecteurs);
-        float compare( const std::vector<float> & vec, float ponderation = 1 ) const;
+        float compare( const std::vector<float> & vec ) const;
     protected:
-        float compareManhattan( const std::vector<float> & vec, float ponderation = 1 ) const;
-        float compareEuclidienne( const std::vector<float> & vec, float ponderation = 1 ) const;
-        float compareMinkowski( const std::vector<float> & vec, float ponderation = 1 ) const;
+        float compareManhattan( const std::vector<float> & vec) const;
+        float compareEuclidienne( const std::vector<float> & vec) const;
+        float compareMinkowski( const std::vector<float> & vec ) const;
 };
 
 #endif // VECTEUR_H
