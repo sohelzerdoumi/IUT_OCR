@@ -1,0 +1,47 @@
+ocr :
+{
+    difference_max = 100;
+    classe:
+    {
+        mode = "normal" ; // normal | moyenne
+    };
+    caracteristique:
+    {
+	mode = "defaut";
+	defaut:
+	{
+        profil :
+        {
+            enable = true;
+            ponderation = 1.0;
+        };
+        courbure :
+        {
+            enable = false;
+            ponderation = 1.0;
+        };
+        isoperimetre :
+        {
+            enable = false;
+            ponderation = 1.0;
+        };
+        momentgeometrique :
+        {
+            enable = false;
+            ponderation = 1.0;
+        };
+        zoning :
+        {
+            enable = true  ;
+            ponderation = 1.5;
+            nbColonnes = 5;
+            nbLignes = 5;
+        };
+	}
+
+    };
+    vecteur:
+    {
+        mode = "euclide"; // manhattan | euclide | minkowski
+    };
+};

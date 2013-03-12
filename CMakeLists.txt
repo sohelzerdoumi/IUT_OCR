@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
+SET( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR} )
 
 #Configuration du projet
 
@@ -6,11 +7,26 @@ project(ProjectOCR)
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BUILD_TYPE})
 
+include(ExternalProject)
+
+ExternalProject_Add(
+	GMP
+	PREFIX extlib/gmp/
+	URL ftp://ftp.gmplib.org/pub/gmp/gmp-5.1.1.tar.bz2
+	DOWNLOAD_DIR /tmp/
+	INSTALL_DIR extlib/gmp/
+	CONFIGURE_COMMAND <SOURCE_DIR>/configure --enable-cxx --prefix=<INSTALL_DIR> --disable-examples
+	INSTALL_COMMAND cp <BINARY_DIR>/libgmpxx.la <BINARY_DIR>/libgmp.la <INSTALL_DIR>/lib && cp <SOURCE_DIR>/gmpxx.h <INSTALL_DIR>/include
+	)
+
+
 #inclusion des entete
 include_directories( include/ extlib/ )
-link_directories( extlib/gmp-5.1.1/.libs/ )
 
-
+ExternalProject_Get_Property(GMP PREFIX)
+link_directories( ${PREFIX}lib )
+include_directories( ${PREFIX}include )
+ 
 #Génération de la liste des fichiers sources
 
 file(

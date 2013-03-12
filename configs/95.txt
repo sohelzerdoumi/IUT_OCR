@@ -1,0 +1,59 @@
+ocr :
+{
+    difference_max = 100;
+    classe:
+    {
+        mode = "normal" ; // normal | moyenne
+    };
+    caracteristique:
+    {
+        mode = "cible";
+        defaut:
+        {
+            profil :
+            {
+                enable = false;
+                ponderation = 1.0;
+            };
+            courbure :
+            {
+                enable = true;
+                ponderation = 1.0;
+            };
+            isoperimetre :
+            {
+                enable = false;
+                ponderation = 1.0;
+            };
+            momentgeometrique :
+            {
+                enable = false;
+                ponderation = 100.0;
+            };
+            zoning :
+            {
+                enable = false  ;
+                ponderation = 1.5;
+                nbColonnes = 5;
+                nbLignes = 5;
+            };
+        };
+
+        cible:
+        {
+            profil:             ["0","1","2","3","4","5","6","7_","8","9"]; // le profil s'appliquera aux classes 0,1,2 .... , 9
+            courbure:           ["0_","1_","2_","3_","4","5_","6_","7","8_","9_"];
+            isoperimetre:       ["0_","1_","2_","3_","4_","5_","6_","7_","8_","9_"];
+            moment_geometrique: ["0_","1_","2_","3_","4_","5_","6_","7_","8_","9_"];
+            zoning:             ["0","1","2","3","4","5","6","7","8","9"];
+        };
+
+    };
+
+    vecteur:
+    {
+        mode = "euclide"; // manhattan | euclide | minkowski
+    };
+};
+
+
