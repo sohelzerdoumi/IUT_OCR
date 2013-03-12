@@ -1,7 +1,7 @@
 #include "caracteristique/Zoning.h"
 
 Zoning::Zoning(cimg_library::CImg<int>  *  cimg)
-: Caracteristique( cimg , "ZONING", getConfigValueFloat("ocr.caracteristique.zoning.ponderation") )
+: Caracteristique( cimg , "zoning", getConfigValueFloat("ocr.caracteristique.defaut.zoning.ponderation") )
 {
     //ctor
 }
@@ -14,8 +14,8 @@ Zoning::~Zoning()
 
 void Zoning::generate(){
     _vecteur.clear();
-    int ZONING_LARGEUR = getConfigValueInt("ocr.caracteristique.zoning.nbColonnes");
-    int ZONING_HAUTEUR = getConfigValueInt("ocr.caracteristique.zoning.nbLignes") ;
+    int ZONING_LARGEUR = getConfigValueInt("ocr.caracteristique.defaut.zoning.nbColonnes");
+    int ZONING_HAUTEUR = getConfigValueInt("ocr.caracteristique.defaut.zoning.nbLignes") ;
     double   _zone[50][50];
     int largeur = _cimg->width()/ZONING_LARGEUR;
     int hauteur = _cimg->height()/ZONING_HAUTEUR;

@@ -42,7 +42,7 @@ float Classe::getCorrespondanceNormal(const MyImage & image) const{
     for(int i=0; i < (signed)_images.size() ;i++){
         if( !(image == *_images[i]) )
         {
-            tmp_corresp = _images[i]->compare(image);
+            tmp_corresp = _images[i]->compare(image, nom);
             correspondance = ( tmp_corresp < correspondance ) ? tmp_corresp : correspondance;
         }
 
@@ -52,7 +52,7 @@ float Classe::getCorrespondanceNormal(const MyImage & image) const{
 }
 
 float Classe::getCorrespondanceMean(const MyImage & image) const{
-    return _image_mean->compare(image);
+    return _image_mean->compare(image, nom);
 }
 
 void Classe::addImage(const std::string & filename){

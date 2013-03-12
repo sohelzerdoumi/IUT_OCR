@@ -118,8 +118,8 @@ void  OCR::displayConfusionMatrix() const{
         cout << "Reconnu : " << success << endl
              << "Non reconnu : " << nonReconnu << endl
              << "Erreurs: " << fail << endl
-             << "Taux d'erreurs: " << fail*100/(success+fail+nonReconnu) << " %" << endl
-             << "Reconnaissance : " << success*100/(success+fail+nonReconnu) << " %" << endl;
+             << "Taux d'erreurs: " << setw(5) << fail*100.0f/(success+fail+nonReconnu) << " %" << endl
+             << "Reconnaissance : " << setw(5) << success*100.0f/(success+fail+nonReconnu) << " %" << endl;
 
 
 

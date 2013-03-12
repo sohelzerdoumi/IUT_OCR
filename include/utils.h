@@ -21,6 +21,7 @@ float               getConfigValueFloat( const std::string & variable );
 int                 getConfigValueInt( const std::string & variable );
 std::string         getConfigValueString( const std::string & variable );
 
+bool isConfigValuesContainString( const std::string & variable, const std::string & value  );
 
 template<typename T>
 void setConfigValue( const std::string & variable, const T & value );

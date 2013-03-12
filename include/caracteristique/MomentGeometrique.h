@@ -3,6 +3,9 @@
 
 #include "Caracteristique.h"
 
+/**
+ * Le moment géometrique représente le centre de gravité de la forme
+ */
 
 class MomentGeometrique : public Caracteristique
 {

@@ -76,12 +76,20 @@ void MyImage::toBinary(){
 
 
 
-float MyImage::compare(const MyImage & img) const{
+float MyImage::compare(const MyImage & img, const std::string & classeName) const{
     float somme_ponderation = 0;
     float diff = 0;
     for(int i=0; i < (signed)_caracteristiques.size() ; i++){
-        diff += _caracteristiques[i]->compare(img._caracteristiques[i])*_caracteristiques[i]->ponderation;
-        somme_ponderation += _caracteristiques[i]->ponderation;
+        if( getConfigValueString("ocr.caracteristique.mode") == "defaut" ){
+            diff += _caracteristiques[i]->compare(img._caracteristiques[i])*_caracteristiques[i]->ponderation;
+            somme_ponderation += _caracteristiques[i]->ponderation;
+        }
+        if( getConfigValueString("ocr.caracteristique.mode") == "cible" ){
+            if( isConfigValuesContainString( "ocr.caracteristique.cible." + _caracteristiques[i]->nom , classeName)){
+                diff += _caracteristiques[i]->compare(img._caracteristiques[i])*_caracteristiques[i]->ponderation;
+                somme_ponderation += _caracteristiques[i]->ponderation;
+            }
+        }
     }
 
     return diff/somme_ponderation;
@@ -93,16 +101,27 @@ void MyImage::generateCaracteristiques(){
 
 }
 void MyImage::loadCaracteristiques(){
-    if( getConfigValueBoolean("ocr.caracteristique.courbure.enable")   )
+    if( getConfigValueString("ocr.caracteristique.mode") == "defaut" ){
+        if( getConfigValueBoolean("ocr.caracteristique.defaut.courbure.enable")  )
+            _caracteristiques.push_back( new  Courbure(&_cimg));
+        if( getConfigValueBoolean("ocr.caracteristique.defaut.profil.enable")  )
+            _caracteristiques.push_back( new  Profil(&_cimg));
+        if( getConfigValueBoolean("ocr.caracteristique.defaut.isoperimetre.enable")   )
+            _caracteristiques.push_back( new  Isoperimetre(&_cimg));
+        if( getConfigValueBoolean("ocr.caracteristique.defaut.zoning.enable")   )
+            _caracteristiques.push_back( new  Zoning(&_cimg));
+        if( getConfigValueBoolean("ocr.caracteristique.defaut.momentgeometrique.enable") )
+            _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
+    }else{
         _caracteristiques.push_back( new  Courbure(&_cimg));
-    if( getConfigValueBoolean("ocr.caracteristique.profil.enable")  )
         _caracteristiques.push_back( new  Profil(&_cimg));
-    if( getConfigValueBoolean("ocr.caracteristique.isoperimetre.enable")   )
         _caracteristiques.push_back( new  Isoperimetre(&_cimg));
-    if( getConfigValueBoolean("ocr.caracteristique.zoning.enable")   )
         _caracteristiques.push_back( new  Zoning(&_cimg));
-    if( getConfigValueBoolean("ocr.caracteristique.momentgeometrique.enable") )
         _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
+    }
+
+
+
 
 
     generateCaracteristiques();

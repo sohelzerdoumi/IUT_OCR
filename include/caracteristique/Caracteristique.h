@@ -6,6 +6,11 @@
 #include <vector>
 #include <string>
 
+/**
+ * Une caracteristique est un ensemble de données
+ * qui permettent de representer mathematiquement une forme
+ */
+
 class Caracteristique
 {
     public:

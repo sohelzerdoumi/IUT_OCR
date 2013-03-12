@@ -8,7 +8,7 @@ Caracteristique::Caracteristique(cimg_library::CImg<int>  *  cimg, const std::st
 }
 
 Caracteristique::Caracteristique(const std::vector<const Caracteristique*> & caracteristiques)
-: ponderation( (caracteristiques.size() > 0) ? caracteristiques[0]->ponderation : 1.0f )
+: nom( (caracteristiques.size() > 0) ? caracteristiques[0]->nom : "NaN" ) , ponderation( (caracteristiques.size() > 0) ? caracteristiques[0]->ponderation : 1.0f )
 {
     if( caracteristiques.size() == 0)
         return;

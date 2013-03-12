@@ -1,42 +1,59 @@
 ocr :
 {
-    difference_max = 100;
+    difference_max = 80;
     classe:
     {
         mode = "normal" ; // normal | moyenne
     };
     caracteristique:
     {
-        profil :
+        mode = "defaut";
+        defaut:
         {
-            enable = true;
-            ponderation = 1.0;
+            profil :
+            {
+                enable = true;
+                ponderation = 1.0;
+            };
+            courbure :
+            {
+                enable = false;
+                ponderation = 0.6;
+            };
+            isoperimetre :
+            {
+                enable = false;
+                ponderation = 1.0;
+            };
+            momentgeometrique :
+            {
+                enable = false;
+                ponderation = 0.3;
+            };
+            zoning :
+            {
+                enable = false  ;
+                ponderation = 1.0;
+                nbColonnes = 5;
+                nbLignes = 5;
+            };
         };
-        courbure :
+
+        cible:
         {
-            enable = false;
-            ponderation = 1.0;
+            profil:             ["0" ,"1","2","3","4","5","6","7_","8","9_"]; // le profil s'appliquera aux classes 0,1,2 .... , 9
+            courbure:           ["0_","1_","2_","3_","4","5_","6_","7","8_","9_"];
+            isoperimetre:       ["0_","1_","2_","3_","4_","5_","6_","7_","8_","9_"];
+            moment_geometrique: ["0_","1_","2_","3_","4_","5_","6_","7_","8_","9_"];
+            zoning:             ["0","1","2","3","4","5","6","7","8","9"];
         };
-        isoperimetre :
-        {
-            enable = false;
-            ponderation = 1.0;
-        };
-        momentgeometrique :
-        {
-            enable = false;
-            ponderation = 1.0;
-        };
-        zoning :
-        {
-            enable = false   ;
-            ponderation = 1.0;
-            nbColonnes = 5;
-            nbLignes = 5;
-        };
+
     };
+
     vecteur:
     {
         mode = "euclide"; // manhattan | euclide | minkowski
     };
 };
+
+

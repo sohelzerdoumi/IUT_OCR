@@ -3,6 +3,10 @@
 
 #include "Caracteristique.h"
 
+/**
+ * Une courbe représente la forme prise par les 4 cotés (haut, bas, gauche et droite) d'objet
+ * Un peu comme un moule que l'on applique d'un coté de l'objet
+ */
 
 class Courbure : public Caracteristique
 {

@@ -22,7 +22,7 @@ class MyImage
         virtual ~MyImage();
 
         bool operator==(const MyImage & i) const;
-        float compare(const MyImage & img) const;
+        float compare(const MyImage & img, const std::string & classeName = "") const;
         void display() const;
         cimg_library::CImg<int>        _cimg;
 

@@ -13,13 +13,6 @@ class Profil : public Caracteristique
         virtual ~Profil();
         void generate();
 
-    private:
-        int                     _data_quantity;
-
-    public:
-        const int *             getData();
-        int                     getSize();
-        int                     getDataQuantity();
 
 };
 

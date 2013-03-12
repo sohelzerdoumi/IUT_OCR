@@ -1,21 +1,20 @@
 # depslib dependency file v1.0
-1362940758 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
+1363027079 source:/home/sohel/IUT/S4_Image/ProjetOCR/main.cpp
 	<iostream>
 	<iomanip>
 	"MyImage.h"
 	"OCR.h"
 	"utils.h"
-	"gmpxx.h"
 	"extlib/SimpleOpt.h"
 	"extlib/SimpleGlob.h"
 
-1363013437 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
+1363040594 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/MyImage.cpp
 	"MyImage.h"
 	"utils.h"
 	<cmath>
 	<iostream>
 
-1362784596 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
+1363038526 /home/sohel/IUT/S4_Image/ProjetOCR/include/MyImage.h
 	"CImg.h"
 	<string>
 	<vector>
@@ -30,7 +29,7 @@
 1362576818 /home/sohel/IUT/S4_Image/ProjetOCR/include/Histogramme.h
 	"CImg.h"
 
-1362939130 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
+1363050608 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/Classe.cpp
 	<utils.h>
 	<iostream>
 	"Classe.h"
@@ -42,7 +41,7 @@
 	<map>
 	<string>
 
-1362939156 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
+1363050419 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/OCR.cpp
 	<dirent.h>
 	<string>
 	<iostream>
@@ -55,10 +54,10 @@
 	<vector>
 	"Classe.h"
 
-1363016903 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Caracteristique.cpp
+1363040571 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Caracteristique.cpp
 	"caracteristique/Caracteristique.h"
 
-1363016784 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Caracteristique.h
+1363088768 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Caracteristique.h
 	"CImg.h"
 	"Vecteur.h"
 	<utils.h>
@@ -82,16 +81,16 @@
 1363016797 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Zoning.h
 	"Caracteristique.h"
 
-1363016818 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Zoning.cpp
+1363040388 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Zoning.cpp
 	"caracteristique/Zoning.h"
 
-1363017826 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/utils.cpp
+1363041107 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/utils.cpp
 	"utils.h"
 	"caracteristique/Caracteristique.h"
 	<iostream>
 	<sstream>
 
-1363017750 /home/sohel/IUT/S4_Image/ProjetOCR/include/utils.h
+1363038925 /home/sohel/IUT/S4_Image/ProjetOCR/include/utils.h
 	<algorithm>
 	<string>
 	<vector>
@@ -109,33 +108,33 @@
 1363013560 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Vecteur.h
 	<vector>
 
-1363016793 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Profil.h
+1363089280 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Profil.h
 	"Caracteristique.h"
 
-1363016814 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Profil.cpp
+1363089610 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Profil.cpp
 	"caracteristique/Profil.h"
 	<cmath>
 	<stdlib.h>
 	<iostream>
 
-1363016776 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Isoperimetre.h
+1363089178 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Isoperimetre.h
 	"Caracteristique.h"
 
-1363016808 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Isoperimetre.cpp
+1363040369 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Isoperimetre.cpp
 	"caracteristique/Isoperimetre.h"
 	<iostream>
 	<cmath>
 
-1363016791 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/MomentGeometrique.h
+1363089206 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/MomentGeometrique.h
 	"Caracteristique.h"
 
-1363016811 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/MomentGeometrique.cpp
+1363048900 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/MomentGeometrique.cpp
 	<caracteristique/MomentGeometrique.h>
 
-1363016780 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Courbure.h
+1363088996 /home/sohel/IUT/S4_Image/ProjetOCR/include/caracteristique/Courbure.h
 	"Caracteristique.h"
 
-1363016805 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Courbure.cpp
+1363040354 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/caracteristique/Courbure.cpp
 	"caracteristique/Courbure.h"
 	<cmath>
 	<stdlib.h>

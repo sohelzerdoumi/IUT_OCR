@@ -5,7 +5,7 @@
 using namespace std;
 
 Isoperimetre::Isoperimetre(cimg_library::CImg<int>  *  cimg)
-: Caracteristique( cimg , "ISOPERIMETRE", getConfigValueFloat("ocr.caracteristique.isoperimetre.ponderation"))
+: Caracteristique( cimg , "isoperimetre", getConfigValueFloat("ocr.caracteristique.defaut.isoperimetre.ponderation"))
 {
     //ctor
 }

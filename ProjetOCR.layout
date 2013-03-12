@@ -1,28 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
-	<File name="include/MyImage.h" open="1" top="0" tabpos="1">
-		<Cursor position="268" topLine="0" />
+	<File name="config.txt" open="1" top="0" tabpos="3">
+		<Cursor position="31" topLine="25" />
 	</File>
-	<File name="include/caracteristique/Caracteristique.h" open="0" top="0" tabpos="0">
+	<File name="include/MyImage.h" open="0" top="0" tabpos="1">
+		<Cursor position="621" topLine="7" />
+	</File>
+	<File name="include/caracteristique/Caracteristique.h" open="1" top="0" tabpos="5">
+		<Cursor position="585" topLine="2" />
+	</File>
+	<File name="include/caracteristique/Courbure.h" open="0" top="0" tabpos="0">
+		<Cursor position="130" topLine="0" />
+	</File>
+	<File name="include/caracteristique/Isoperimetre.h" open="0" top="0" tabpos="0">
+		<Cursor position="145" topLine="0" />
+	</File>
+	<File name="include/caracteristique/MomentGeometrique.h" open="0" top="0" tabpos="0">
+		<Cursor position="160" topLine="0" />
+	</File>
+	<File name="include/caracteristique/Profil.h" open="0" top="0" tabpos="0">
+		<Cursor position="142" topLine="0" />
+	</File>
+	<File name="include/caracteristique/Vecteur.h" open="0" top="0" tabpos="0">
+		<Cursor position="549" topLine="0" />
+	</File>
+	<File name="include/caracteristique/Zoning.h" open="0" top="0" tabpos="5">
+		<Cursor position="124" topLine="0" />
+	</File>
+	<File name="include/utils.h" open="0" top="0" tabpos="0">
+		<Cursor position="778" topLine="0" />
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="1467" topLine="29" />
+	</File>
+	<File name="src/Classe.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1018" topLine="32" />
+	</File>
+	<File name="src/MyImage.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="2629" topLine="71" />
+	</File>
+	<File name="src/OCR.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="3364" topLine="98" />
+	</File>
+	<File name="src/caracteristique/Caracteristique.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="437" topLine="0" />
 	</File>
-	<File name="include/caracteristique/Zoning.h" open="1" top="0" tabpos="5">
-		<Cursor position="91" topLine="0" />
+	<File name="src/caracteristique/Courbure.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="239" topLine="9" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="708" topLine="0" />
+	<File name="src/caracteristique/Isoperimetre.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="203" topLine="0" />
 	</File>
-	<File name="src/MyImage.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1692" topLine="48" />
+	<File name="src/caracteristique/MomentGeometrique.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="895" topLine="4" />
 	</File>
-	<File name="src/caracteristique/Caracteristique.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="109" topLine="0" />
+	<File name="src/caracteristique/Profil.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="231" topLine="0" />
 	</File>
-	<File name="src/caracteristique/Vecteur.cpp" open="1" top="1" tabpos="7">
-		<Cursor position="1984" topLine="37" />
+	<File name="src/caracteristique/Vecteur.cpp" open="1" top="1" tabpos="9">
+		<Cursor position="1730" topLine="30" />
 	</File>
-	<File name="src/caracteristique/Zoning.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="932" topLine="0" />
+	<File name="src/caracteristique/Zoning.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="120" topLine="0" />
+	</File>
+	<File name="src/utils.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="748" topLine="20" />
 	</File>
 </CodeBlocks_layout_file>

@@ -1,7 +1,7 @@
 #include <caracteristique/MomentGeometrique.h>
 
 MomentGeometrique::MomentGeometrique(cimg_library::CImg<int>  *  cimg)
-: Caracteristique( cimg , "MOMENT_GEOMETRIQUE" , getConfigValueFloat("ocr.caracteristique.momentgeometrique.ponderation"))
+: Caracteristique( cimg , "moment_geometrique" , getConfigValueFloat("ocr.caracteristique.defaut.momentgeometrique.ponderation"))
 {
 }
 

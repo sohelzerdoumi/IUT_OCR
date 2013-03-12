@@ -19,6 +19,18 @@ void setConfigValue( const string & variable, const T & value ){
 
 
 
+bool isConfigValuesContainString( const string & variable, const string & value  ){
+    bool contain = false;
+    int i =0;
+    const char * tmp;
+    Setting &s = cfg.lookup(variable);
+    while( i < s.getLength()  and ! contain){
+        tmp = s[i];
+        if( value == tmp) contain = true ;
+    i++;}
+    //cout << variable << "  ? " << value << "  =  " << contain << endl;
+    return contain;
+}
 
 bool getConfigValueBoolean( const string & variable ){
     bool out = false;
