@@ -16,8 +16,8 @@ ExternalProject_Add(
 	DOWNLOAD_DIR /tmp/
 	INSTALL_DIR extlib/gmp/
 	CONFIGURE_COMMAND <SOURCE_DIR>/configure --enable-cxx --prefix=<INSTALL_DIR> --disable-examples
-	INSTALL_COMMAND cp <BINARY_DIR>/libgmpxx.la <BINARY_DIR>/libgmp.la <INSTALL_DIR>/lib && cp <SOURCE_DIR>/gmpxx.h <INSTALL_DIR>/include
-	)
+	INSTALL_COMMAND make install
+)
 
 
 #inclusion des entete

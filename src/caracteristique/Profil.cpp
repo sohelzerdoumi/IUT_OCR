@@ -45,7 +45,7 @@ void Profil::generate(){
             currentPixel = _cimg->data(c,l);
             tmp_int += (currentPixel[0] < SEUIL );
         }
-        ponderationCase =  pow( 1.01f , -pow( l - 15, 2)  );
+        ponderationCase =  1; //pow( 1.01f , -pow( l - 15, 2)  );
         _vecteur.push_back(tmp_int*ponderationCase*100.0/largeur);
     }
 

@@ -140,13 +140,13 @@
 	<stdlib.h>
 	<iostream>
 
-1362794039 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/SimpleOpt.h
+1363103723 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/SimpleOpt.h
 	<stdlib.h>
 	<string.h>
 	<crtdbg.h>
 	<assert.h>
 
-1362794104 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/SimpleGlob.h
+1363103729 /home/sohel/IUT/S4_Image/ProjetOCR/extlib/SimpleGlob.h
 	<mbstring.h>
 	<sys/types.h>
 	<sys/stat.h>
@@ -186,4 +186,13 @@
 	<cfloat>
 	<gmp.h>
 	<type_traits>
+
+1363092155 source:/home/sohel/IUT/S4_Image/ProjetOCR/src/main.cpp
+	<iostream>
+	<iomanip>
+	"MyImage.h"
+	"OCR.h"
+	"utils.h"
+	"SimpleOpt.h"
+	"SimpleGlob.h"
 

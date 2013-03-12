@@ -1,24 +1,24 @@
 ocr :
 {
-    difference_max = 80;
+    difference_max = 100;
     classe:
     {
         mode = "normal" ; // normal | moyenne
     };
     caracteristique:
     {
-        mode = "defaut";
+        mode = "cible";
         defaut:
         {
             profil :
             {
-                enable = true;
+                enable = false;
                 ponderation = 1.0;
             };
             courbure :
             {
-                enable = false;
-                ponderation = 0.6;
+                enable = true;
+                ponderation = 1.0;
             };
             isoperimetre :
             {
@@ -28,12 +28,12 @@ ocr :
             momentgeometrique :
             {
                 enable = false;
-                ponderation = 0.3;
+                ponderation = 100.0;
             };
             zoning :
             {
                 enable = false  ;
-                ponderation = 1.0;
+                ponderation = 1.5;
                 nbColonnes = 5;
                 nbLignes = 5;
             };
@@ -41,7 +41,7 @@ ocr :
 
         cible:
         {
-            profil:             ["0" ,"1","2","3","4","5","6","7_","8","9_"]; // le profil s'appliquera aux classes 0,1,2 .... , 9
+            profil:             ["0","1","2","3","4","5","6","7_","8","9"]; // le profil s'appliquera aux classes 0,1,2 .... , 9
             courbure:           ["0_","1_","2_","3_","4","5_","6_","7","8_","9_"];
             isoperimetre:       ["0_","1_","2_","3_","4_","5_","6_","7_","8_","9_"];
             moment_geometrique: ["0_","1_","2_","3_","4_","5_","6_","7_","8_","9_"];
