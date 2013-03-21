@@ -26,11 +26,11 @@ class Caracteristique
         virtual void                generate();
         virtual float               compare( const Caracteristique * c) const;
 
-        virtual Vecteur             getVector() const;
+        Vecteur                     getVector() const;
 
     protected:
         cimg_library::CImg<int>  *  _cimg;
-        Vecteur                 _vecteur;
+        Vecteur                     _vecteur;
 
 };
 
