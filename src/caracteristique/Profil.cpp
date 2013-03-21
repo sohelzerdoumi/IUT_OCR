@@ -9,9 +9,10 @@ using namespace cimg_library;
 
 
 Profil::Profil(cimg_library::CImg<int>  *  cimg)
-: Caracteristique( cimg , "profil", getConfigValueFloat("ocr.caracteristique.defaut.profil.ponderation") )
-{
-}
+: Caracteristique( cimg , "profil", 
+                                getConfigValueFloat("ocr.caracteristique.defaut.profil.ponderation"),
+                                getConfigValueInt("ocr.caracteristique.defaut.profil.diff_max") )
+{}
 
 void Profil::generate(){
     _vecteur.clear();
@@ -32,7 +33,7 @@ void Profil::generate(){
             currentPixel = _cimg->data(c,l);
             tmp_int += (currentPixel[0]  < SEUIL );
         }
-        ponderationCase =  pow( 1.01f , -pow( c - 15, 2)  );
+        ponderationCase =  pow( 1.0f , -pow( c - 15, 2)  );
         _vecteur.push_back( (tmp_int* ponderationCase) *100.0/hauteur);
     }
 

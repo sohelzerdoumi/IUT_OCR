@@ -1,7 +1,9 @@
 #include "caracteristique/Zoning.h"
 
 Zoning::Zoning(cimg_library::CImg<int>  *  cimg)
-: Caracteristique( cimg , "zoning", getConfigValueFloat("ocr.caracteristique.defaut.zoning.ponderation") )
+: Caracteristique( cimg , "zoning",
+                         getConfigValueFloat("ocr.caracteristique.defaut.zoning.ponderation"),
+                         getConfigValueInt("ocr.caracteristique.defaut.zoning.diff_max") )
 {
     //ctor
 }

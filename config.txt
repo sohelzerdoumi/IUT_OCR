@@ -1,6 +1,6 @@
 ocr :
 {
-    difference_max = 100;
+    difference_max = 200;
     classe:
     {
         mode = "normal" ; // normal | moyenne
@@ -12,28 +12,33 @@ ocr :
         {
             profil :
             {
-                enable = false;
+                enable = true;
                 ponderation = 1.0;
+                diff_max = 100;
             };
             courbure :
             {
                 enable = true;
                 ponderation = 1.0;
+                diff_max = 70;
             };
             isoperimetre :
             {
                 enable = false;
                 ponderation = 1.0;
+                diff_max = 1000;
             };
             momentgeometrique :
             {
                 enable = false;
                 ponderation = 100.0;
+                diff_max = 1000;
             };
             zoning :
             {
-                enable = false  ;
+                enable = true  ;
                 ponderation = 1.5;
+                diff_max = 85;
                 nbColonnes = 5;
                 nbLignes = 5;
             };

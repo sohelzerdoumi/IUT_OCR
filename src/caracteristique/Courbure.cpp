@@ -9,7 +9,10 @@ using namespace cimg_library;
 
 
 Courbure::Courbure(cimg_library::CImg<int>  *  cimg)
-: Caracteristique( cimg , "courbure", getConfigValueFloat("ocr.caracteristique.defaut.courbure.ponderation") )
+: Caracteristique( cimg , "courbure", 
+                  getConfigValueFloat("ocr.caracteristique.defaut.courbure.ponderation") ,
+                  getConfigValueInt("ocr.caracteristique.defaut.courbure.diff_max") )
+
 {
 }
 

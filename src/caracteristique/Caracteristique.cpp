@@ -2,15 +2,15 @@
 
 using namespace std;
 
-Caracteristique::Caracteristique(cimg_library::CImg<int>  *  cimg, const std::string & nomCaracteristique, const float & ponderationCaracteristique)
-: nom( nomCaracteristique), 
-  ponderation( ponderationCaracteristique) , _cimg( cimg)
+Caracteristique::Caracteristique(cimg_library::CImg<int>  *  cimg, const std::string & nomCaracteristique, const float & ponderationCaracteristique, const int & diff_max)
+: nom( nomCaracteristique),   ponderation( ponderationCaracteristique) , difference_max( diff_max), _cimg( cimg)
 {
 }
 
 Caracteristique::Caracteristique(const std::vector<const Caracteristique*> & caracteristiques)
 : nom( (caracteristiques.size() > 0) ? caracteristiques[0]->nom : "NaN" ) , 
-  ponderation( (caracteristiques.size() > 0) ? caracteristiques[0]->ponderation : 1.0f )
+  ponderation( (caracteristiques.size() > 0) ? caracteristiques[0]->ponderation : 1.0f ),
+  difference_max( (caracteristiques.size() > 0) ? caracteristiques[0]->difference_max : 1000 )
 {
     if( caracteristiques.size() == 0)
         return;
@@ -25,7 +25,7 @@ Caracteristique::Caracteristique(const std::vector<const Caracteristique*> & car
 
 
 Caracteristique::Caracteristique(const Caracteristique & c)
-: nom( c.nom), ponderation( c.ponderation ), _cimg( c._cimg), _vecteur( c._vecteur)
+: nom( c.nom), ponderation( c.ponderation ), difference_max(c.difference_max), _cimg( c._cimg), _vecteur( c._vecteur)
 {}
 
 Caracteristique::~Caracteristique() {}
@@ -33,7 +33,7 @@ Caracteristique::~Caracteristique() {}
 void   Caracteristique::generate(){}
 
 float       Caracteristique::compare( const Caracteristique * c) const{
-    return getVector().compare(c->getVector() );
+    return getVector().compare(c->getVector() , difference_max);
 }
 
 Vecteur       Caracteristique::getVector() const{

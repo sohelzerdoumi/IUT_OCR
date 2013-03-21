@@ -17,11 +17,12 @@ class Caracteristique
         /** Default constructor */
         Caracteristique(const Caracteristique & c);
         Caracteristique(const std::vector<const Caracteristique*> & caracteristiques);
-        Caracteristique(cimg_library::CImg<int>  *  cimg, const std::string & nomCarateristique, const float & ponderationCaracteristique = 1.0f );
+        Caracteristique(cimg_library::CImg<int>  *  cimg, const std::string & nomCarateristique, const float & ponderationCaracteristique = 1.0f , const int & diff_max = 1000);
         virtual ~Caracteristique();
 
         const std::string           nom;
         const float                 ponderation;
+        const int                   difference_max;
         virtual void                generate();
         virtual float               compare( const Caracteristique * c) const;
 

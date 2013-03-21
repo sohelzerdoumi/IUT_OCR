@@ -25,38 +25,40 @@ Vecteur::Vecteur( const std::vector<const Vecteur*> vecteurs): vector(){
 }
 
 
-float Vecteur::compare( const std::vector<float> & vec ) const{
+float Vecteur::compare( const std::vector<float> & vec , const int & difference_max) const{
     string mode = getConfigValueString("ocr.vecteur.mode");
     if( mode == "euclide")
-        return compareEuclidienne(vec);
+        return compareEuclidienne(vec,difference_max);
 
     if( mode == "manhattan")
-        return compareManhattan(vec);
+        return compareManhattan(vec,difference_max);
 
     if( mode == "minkowski")
-        return compareMinkowski(vec);
+        return compareMinkowski(vec,difference_max);
     return 0;
 }
 
 
-float Vecteur::compareManhattan( const std::vector<float> & vec ) const{
+float Vecteur::compareManhattan( const std::vector<float> & vec  , const int & difference_max) const{
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
     float distance = 0;
     for(int i=0; i < (signed) this->size() ; i++){
+        if( abs(vec[i] - (*this)[i]) > difference_max)
+            return VECTOR_ERROR;
         distance += abs(vec[i] - (*this)[i]);
     }
 
     return distance;
 }
-float Vecteur::compareEuclidienne( const std::vector<float> & vec ) const{
+float Vecteur::compareEuclidienne( const std::vector<float> & vec , const int & difference_max ) const{
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
     float distance = 0;
     for(int i=0; i < (signed) this->size() ; i++){
-        if(pow(abs(vec[i] - (*this)[i]) , 2) > 150*150)
+        if(pow(abs(vec[i] - (*this)[i]) , 2) > difference_max*difference_max)
             return VECTOR_ERROR;
 
         distance += pow(abs(vec[i] - (*this)[i]) , 2);
@@ -67,7 +69,7 @@ float Vecteur::compareEuclidienne( const std::vector<float> & vec ) const{
 }
 
 
-float Vecteur::compareMinkowski( const std::vector<float> & vec ) const{
+float Vecteur::compareMinkowski( const std::vector<float> & vec , const int & difference_max ) const{
     mpz_class distance = 0;
     mpz_class tmpz = 0;
 

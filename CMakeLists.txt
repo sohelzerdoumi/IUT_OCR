@@ -14,7 +14,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BUILD_TYPE})
 include_directories( include/ extlib/)
 
 find_package(GMP REQUIRED)
-include_directories( ${GMP_HEADER_PATH} )
+find_package(CIMG REQUIRED)
 
  
 #Génération de la liste des fichiers sources
@@ -40,10 +40,11 @@ target_link_libraries(     Release
         pthread
         config++
         sfml-audio
-		sfml-graphics
-		sfml-window
-		sfml-system
-        ${GMP_LIBRARY_PATH}
+	sfml-graphics
+	sfml-window
+	sfml-system
+        gmp
 )
 
 add_dependencies( Release GMP )
+add_dependencies( Release CIMG )
