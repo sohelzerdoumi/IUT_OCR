@@ -29,6 +29,13 @@ L'objectif est de reconnaitre une forme contenu dans une image.
 ###Définir un fichier de configuration###
 >./Release -t --config configs/94.txt
 
+###Interface graphique###
+>./Release -X
+
+######Commandes:######
+*  touche C : lance l'analyse de l'image ( voir le terminal )
+*  clique gauche : dessiner 
+*  clique droit  : tout effacer
 
 
 
