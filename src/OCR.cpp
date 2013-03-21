@@ -33,7 +33,11 @@ OCR::OCR()
 
 }
 
-
+/**
+ * Analyse une image afin de determiner sa forme
+ * @param image : image  à analyser
+ * @return Correspondance : structure contenant le rapport
+ */
 Correspondance OCR::getCorrespondance(const MyImage & image) const{
     Correspondance c={0,""};
     float differenceMin = 100000000;
@@ -63,7 +67,7 @@ void  OCR::displayConfusionMatrix() const{
     /*
      *  Affichage en-tete tableau
      */
-     cout << "    |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9  |  ?" << endl;
+     cout << "    |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  ?" << endl;
      cout << "-------------------------------------------------------" << endl;
 
     /*
@@ -81,7 +85,7 @@ void  OCR::displayConfusionMatrix() const{
                 if( _classes[i]->nom == intToString(j) ){
                     success += rapport[intToString(j)];
                     cout << "| " ;
-                    cout << "\e[1m\e[32m\e[40m";
+                    cout << "\33[1m\33[32m\33[40m";  // Vert
                     cout <<  setw(2) ;
                     cout << rapport[intToString(j)] << " ";
                     cout << "\33[0m" ;
@@ -89,7 +93,7 @@ void  OCR::displayConfusionMatrix() const{
                 else{
                     fail += rapport[intToString(j)] ;
                     cout << "| " ;
-                    cout << "\e[1m\e[32m\e[41m";
+                    cout << "\33[1m\33[32m\33[41m";  // Rouge
                     cout <<  setw(2) ;
                     cout << rapport[intToString(j)] << " ";
                     cout << "\33[0m" ;
@@ -98,12 +102,12 @@ void  OCR::displayConfusionMatrix() const{
              }
         }
 
-                            nonReconnu += rapport["?"] ;
-                            cout << "| " ;
-                            cout << "\e[1m\e[32m\e[44m";
-                            cout <<  setw(2) ;
-                            cout << rapport["?"] << " ";
-                            cout << "\33[0m" ;
+        nonReconnu += rapport["?"] ;
+        cout << "| " ;
+        cout << "\33[1m\33[32m\33[44m"; // Bleu
+        cout <<  setw(2) ;
+        cout << rapport["?"] << " ";
+        cout << "\33[0m" ;
 
 
 

@@ -18,6 +18,23 @@ MyImage::MyImage(std::string filename,int largeur, int hauteur )
     loadCaracteristiques();
 }
 
+MyImage::MyImage(const sf::Image & i)
+{
+    _cimg.resize( i.GetWidth(), i.GetHeight() );
+    for(int c = 0; c < (signed)i.GetWidth() ;c++ )
+        for(int r = 0; r < (signed)i.GetHeight() ;r++ ){
+            _cimg.data(c,r)[0] = i.GetPixel(c,r).r;
+            _cimg.data(c,r)[1] = i.GetPixel(c,r).g;
+            _cimg.data(c,r)[2] = i.GetPixel(c,r).b;
+        }
+
+    toBinary();
+    _cimg.autocrop(255);
+    _cimg.resize(IMG_HAUTEUR,IMG_LARGEUR);
+
+    loadCaracteristiques();
+}
+
 MyImage::MyImage(const std::vector<const MyImage*> & images){
     if( images.size() == 0)
         return;
@@ -35,11 +52,6 @@ MyImage::MyImage(const std::vector<const MyImage*> & images){
 
 }
 
-
-
-
-
-
 MyImage::MyImage(const MyImage & i, int largeur, int hauteur)
 : _cimg(i._filename.c_str())
 {
@@ -51,7 +63,7 @@ MyImage::MyImage(const MyImage & i, int largeur, int hauteur)
 }
 
 MyImage::MyImage(const MyImage & i)
-: _cimg( i._filename.c_str())//, hHorizontal(&_cimg, HISTOGRAMME_HORIZONTAL),hVertical(&_cimg, HISTOGRAMME_VERTICAL)
+: _cimg( i._filename.c_str())
 {
     _filename = i._filename;
     toBinary();
@@ -59,6 +71,9 @@ MyImage::MyImage(const MyImage & i)
     loadCaracteristiques();
 }
 
+/**
+ * Convertie l'image en binaire
+ */
 void MyImage::toBinary(){
     int largeur = _cimg.width();
     int hauteur =  _cimg.height();
@@ -119,10 +134,6 @@ void MyImage::loadCaracteristiques(){
         _caracteristiques.push_back( new  Zoning(&_cimg));
         _caracteristiques.push_back( new  MomentGeometrique(&_cimg));
     }
-
-
-
-
 
     generateCaracteristiques();
 }

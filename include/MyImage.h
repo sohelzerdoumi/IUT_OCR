@@ -3,6 +3,7 @@
 
 #define IMG_HAUTEUR 30
 #define IMG_LARGEUR 30
+#include <SFML/Graphics.hpp>
 
 #include "CImg.h"
 
@@ -16,6 +17,7 @@ class MyImage
 {
     public:
         MyImage(const MyImage & i);
+        MyImage(const sf::Image & i);
         MyImage(const std::vector<const MyImage*> & images);
         MyImage(const MyImage & i,int largeur = IMG_LARGEUR, int hauteur = IMG_HAUTEUR);
         MyImage(std::string filename,int largeur = IMG_LARGEUR, int hauteur = IMG_HAUTEUR);

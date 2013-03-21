@@ -3,12 +3,14 @@
 using namespace std;
 
 Caracteristique::Caracteristique(cimg_library::CImg<int>  *  cimg, const std::string & nomCaracteristique, const float & ponderationCaracteristique)
-: nom( nomCaracteristique), ponderation( ponderationCaracteristique) , _cimg( cimg)
+: nom( nomCaracteristique), 
+  ponderation( ponderationCaracteristique) , _cimg( cimg)
 {
 }
 
 Caracteristique::Caracteristique(const std::vector<const Caracteristique*> & caracteristiques)
-: nom( (caracteristiques.size() > 0) ? caracteristiques[0]->nom : "NaN" ) , ponderation( (caracteristiques.size() > 0) ? caracteristiques[0]->ponderation : 1.0f )
+: nom( (caracteristiques.size() > 0) ? caracteristiques[0]->nom : "NaN" ) , 
+  ponderation( (caracteristiques.size() > 0) ? caracteristiques[0]->ponderation : 1.0f )
 {
     if( caracteristiques.size() == 0)
         return;
@@ -26,10 +28,7 @@ Caracteristique::Caracteristique(const Caracteristique & c)
 : nom( c.nom), ponderation( c.ponderation ), _cimg( c._cimg), _vecteur( c._vecteur)
 {}
 
-Caracteristique::~Caracteristique()
-{
-    //dtor
-}
+Caracteristique::~Caracteristique() {}
 
 void   Caracteristique::generate(){}
 

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <iomanip>
+#include "Fenetre.h"
+
 #include "MyImage.h"
 #include "OCR.h"
 #include "utils.h"
@@ -8,7 +10,7 @@
 
 using namespace std;
 
-enum OPT_T{ OPT_FLAG, OPT_CONFIG_FILE,  OPT_ACTION, ACT_TEST, ACT_CORRESPONDANCE, ACT_HELP  };
+enum OPT_T{ OPT_FLAG, OPT_CONFIG_FILE,  OPT_ACTION, ACT_TEST, ACT_CORRESPONDANCE, ACT_HELP, ACT_GUI  };
 
 CSimpleOpt::SOption g_rgOptions[] = {
     { OPT_CONFIG_FILE ,     ("-c"),         SO_REQ_SEP },
@@ -18,10 +20,12 @@ CSimpleOpt::SOption g_rgOptions[] = {
 
 
 
+    { ACT_GUI ,            ("-X"),         SO_NONE    },
     { ACT_TEST ,            ("-t"),         SO_NONE    },
     { ACT_TEST ,            ("--test"),     SO_NONE    },
     { ACT_CORRESPONDANCE ,  ("-f"),         SO_REQ_SEP },
     { ACT_CORRESPONDANCE ,  ("--file"),     SO_REQ_SEP },
+    { ACT_HELP ,            ("-r"),         SO_MULTI    },
     { ACT_HELP ,            ("-h"),         SO_NONE    },
     { ACT_HELP ,            ("--help"),     SO_NONE    },
     SO_END_OF_OPTIONS
@@ -60,10 +64,15 @@ void runCorrespondance(const string & option, const map<string,string> & flags){
             img.display();
 }
 
-
+void runGUI(const string & option, const map<string,string> & flags){
+    OCR::instance();
+    Fenetre f;
+    f.run();
+}
 
 int main(int argc, char ** argv)
 {
+
 
     OPT_T action = ACT_HELP;
     string action_option ;
@@ -73,17 +82,25 @@ int main(int argc, char ** argv)
 
     CSimpleOpt args(argc, argv, g_rgOptions);
 
+    /*
+     * Analyse des parametres
+     */
     while (args.Next()) {
         if (args.LastError() == SO_SUCCESS) {
             switch(args.OptionId() ) {
                 case ACT_TEST:
                     action = ACT_TEST ;
                     break;
+                case ACT_GUI:
+                    action = ACT_GUI ;
+                    break;
                 case ACT_CORRESPONDANCE:
                     action = ACT_CORRESPONDANCE ;
                     action_option = args.OptionArg();
                     break;
                 case ACT_HELP:
+
+                    cout << args.MultiArg(20) << endl;
                     action = ACT_HELP;
                     break;
 
@@ -99,7 +116,9 @@ int main(int argc, char ** argv)
 
     }
 
-
+    /*
+     * Choix de l'action
+     */
     switch( action ) {
                 case ACT_TEST:
                     runTests();
@@ -107,6 +126,10 @@ int main(int argc, char ** argv)
 
                 case ACT_CORRESPONDANCE:
                     runCorrespondance( action_option, flags);
+                    break;
+
+               case ACT_GUI:
+                    runGUI( action_option, flags);
                     break;
 
 
