@@ -48,3 +48,6 @@ target_link_libraries(     Release
 
 add_dependencies( Release GMP )
 add_dependencies( Release CIMG )
+
+add_custom_target(   stats
+                    COMMAND  /usr/bin/wc  ${source_files} )
