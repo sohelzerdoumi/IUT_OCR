@@ -26,6 +26,8 @@ void Courbure::generate(){
     /*
      *  Courbure Haut
      */
+     for(int i=0: 55)
+        cout << i << endl;
     for(int idColonne = 0; idColonne < largeur ; idColonne++){
         cpt =0;
         currentPixel = _cimg->data(idColonne,cpt)[0];

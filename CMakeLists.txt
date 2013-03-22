@@ -4,7 +4,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/Modules/ )
 #Configuration du projet
 
 project(ProjectOCR)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --pedantic -O3 -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --pedantic -std=c++0x -O3 -Wall")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BUILD_TYPE})
 
 

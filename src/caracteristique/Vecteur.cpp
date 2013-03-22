@@ -44,10 +44,14 @@ float Vecteur::compareManhattan( const std::vector<float> & vec  , const int & d
         return VECTOR_ERROR;
 
     float distance = 0;
-    for(int i=0; i < (signed) this->size() ; i++){
-        if( abs(vec[i] - (*this)[i]) > difference_max)
+
+    auto my_value    = this->begin();
+    auto other_value = vec.begin();
+
+    while( my_value != this->end() && other_value != vec.end() ){
+        if( abs( *other_value - *my_value ) > difference_max)
             return VECTOR_ERROR;
-        distance += abs(vec[i] - (*this)[i]);
+        distance += abs(*other_value - *my_value);
     }
 
     return distance;
@@ -56,13 +60,18 @@ float Vecteur::compareEuclidienne( const std::vector<float> & vec , const int & 
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
+    auto my_value    = this->begin();
+    auto other_value = vec.begin();
+
     float distance = 0;
-    for(int i=0; i < (signed) this->size() ; i++){
-        if(pow(abs(vec[i] - (*this)[i]) , 2) > difference_max*difference_max)
+    while( my_value != this->end() && other_value != vec.end() ){
+        if(pow(abs( *other_value - *my_value) , 2) > difference_max*difference_max)
             return VECTOR_ERROR;
 
-        distance += pow(abs(vec[i] - (*this)[i]) , 2);
+        distance += pow(abs( *other_value - *my_value) , 2);
+        my_value++; other_value++;
     }
+
     distance /= this->size() ;
     distance = sqrt(distance) ;
     return distance;
@@ -76,8 +85,11 @@ float Vecteur::compareMinkowski( const std::vector<float> & vec , const int & di
     if( vec.size() != this->size() )
         return VECTOR_ERROR;
 
-    for(int i=0; i < (signed) this->size() ; i++){
-        mpz_ui_pow_ui( tmpz.get_mpz_t(),  abs(vec[i] - (*this)[i]),  this->size());
+    auto my_value    = this->begin();
+    auto other_value = vec.begin();
+
+    while( my_value != this->end() && other_value != vec.end() ){
+        mpz_ui_pow_ui( tmpz.get_mpz_t(),  abs(other_value - my_value),  this->size());
         distance += tmpz;
     }
 

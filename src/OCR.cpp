@@ -26,10 +26,10 @@ OCR::OCR()
     string pathDir = PATH_BASE;
 
     std::vector <std::string> dirs =  read_directory( pathDir);
-    for(int i = 0; i < (signed)dirs.size() ;i++){
-            _classes.push_back( new Classe( dirs[i]) );
+    for(std::string &dir : dirs )
+            _classes.push_back( new Classe( dir) );
 
-    }
+    
 
 }
 
@@ -42,18 +42,18 @@ Correspondance OCR::getCorrespondance(const MyImage & image) const{
     Correspondance c={0,""};
     float differenceMin = 100000000;
     float tmp_diff = 10000000;
-    int   id_diffMin = -1;
-    for(int i=0; i < (signed)_classes.size() ;i++){
-        tmp_diff = _classes[i]->getCorrespondance(image);
-        //cout << _classes[i]->nom << " " << tmp_diff << endl;
+    const Classe *  classe_diffMin = 0;
+    for(const Classe * classeCurrent : _classes ){
+        tmp_diff = classeCurrent->getCorrespondance(image);
+
         if( tmp_diff < differenceMin  ){
             differenceMin = tmp_diff;
-            id_diffMin = i;
+            classe_diffMin = classeCurrent;
         }
     }
-    if( id_diffMin != -1){
+    if( classe_diffMin != 0){
         c.diffMin = differenceMin;
-        c.nomClasse  =  (differenceMin < getConfigValueInt("ocr.difference_max") ) ? _classes[id_diffMin]->nom : "?";
+        c.nomClasse  =  (differenceMin < getConfigValueInt("ocr.difference_max") ) ? classe_diffMin->nom : "?";
     }
 
     return c;
@@ -73,16 +73,16 @@ void  OCR::displayConfusionMatrix() const{
     /*
      *  Rapport par classe
      */
-    for( int i=0; i < (signed)_classes.size() ; i++ ){
+    for(const Classe * classeCurrent : _classes){
 
-        rapport = _classes[i]->test();
-        cout << "   " << _classes[i]->nom ;
+        rapport = classeCurrent->test();
+        cout << "   " << classeCurrent->nom ;
         for(int j=0; j < 10 ; j++){
              if( rapport.find( intToString(j)) ==rapport.end() ){
                 cout << "|  0 " ;
              }else{
 
-                if( _classes[i]->nom == intToString(j) ){
+                if( classeCurrent->nom == intToString(j) ){
                     success += rapport[intToString(j)];
                     cout << "| " ;
                     cout << "\33[1m\33[32m\33[40m";  // Vert

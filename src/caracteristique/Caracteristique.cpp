@@ -17,8 +17,8 @@ Caracteristique::Caracteristique(const std::vector<const Caracteristique*> & car
     vector<const Vecteur *> vecteurs;
 
 
-    for(int idCaracteristique = 0; idCaracteristique < (signed)caracteristiques.size() ; idCaracteristique++)
-        vecteurs.push_back( &caracteristiques[idCaracteristique]->_vecteur );
+    for(const Caracteristique * c : caracteristiques)
+        vecteurs.push_back( &c->_vecteur );
 
     _vecteur = Vecteur( vecteurs );
 }

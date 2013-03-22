@@ -43,8 +43,8 @@ MyImage::MyImage(const std::vector<const MyImage*> & images){
 
     for(int idCaracteristique =0; idCaracteristique < (signed)images[0]->_caracteristiques.size() ; idCaracteristique++ ){
         caracteristiques.clear();
-        for(int idImage = 0; idImage < (signed)images.size() ; idImage++){
-            caracteristiques.push_back( images[idImage]->_caracteristiques[idCaracteristique] );
+        for( auto img : images ){
+            caracteristiques.push_back( img->_caracteristiques[idCaracteristique] );
         }
         _caracteristiques.push_back( new Caracteristique( caracteristiques ) ) ;
     }
@@ -112,8 +112,8 @@ float MyImage::compare(const MyImage & img, const std::string & classeName) cons
 }
 
 void MyImage::generateCaracteristiques(){
-    for(int i=0; i < (signed)_caracteristiques.size() ; i++)
-        _caracteristiques[i]->generate();
+    for( Caracteristique * carac : _caracteristiques)
+        carac->generate();
 
 }
 void MyImage::loadCaracteristiques(){
@@ -162,7 +162,7 @@ bool MyImage::operator==(const MyImage & i) const{
 
 
 MyImage::~MyImage(){
-    for(int i=0; i < (signed)_caracteristiques.size() ; i++)
-        delete _caracteristiques[i];
+    for( Caracteristique * carac : _caracteristiques)
+        delete carac;
 
 }

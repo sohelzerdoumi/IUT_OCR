@@ -14,8 +14,8 @@ Classe::Classe(const std::string & nomClasse)
     pathDir += nom  ;
 
     std::vector <std::string> dirs =  read_directory( pathDir);
-    for(int i = 0; i < (signed)dirs.size() ;i++)
-            addImage( dirs[i]);
+    for(std::string &dir : dirs )
+            addImage( dir);
     _image_mean = new MyImage( _images );
 
 }
@@ -39,15 +39,15 @@ float  Classe::getCorrespondance(const MyImage & image) const{
 float Classe::getCorrespondanceNormal(const MyImage & image) const{
     float correspondance = 10000000;
     float tmp_corresp = 10000000;
-    for(int i=0; i < (signed)_images.size() ;i++){
-        if( !(image == *_images[i]) )
+
+    for( const MyImage * imageClasse : _images){
+        if( !(image == *imageClasse) )
         {
-            tmp_corresp = _images[i]->compare(image, nom);
+            tmp_corresp = imageClasse->compare(image, nom);
             correspondance = ( tmp_corresp < correspondance ) ? tmp_corresp : correspondance;
         }
 
     }
-
     return correspondance;
 }
 
@@ -64,12 +64,15 @@ void Classe::addImage(const std::string & filename){
 map<string,int>   Classe::test() const{
     map<string,int> rapport;
     string nomClasse;
-    for(int i=0; i <  (signed)_images.size() ;i++){
-        nomClasse = OCR::instance()->getCorrespondance( *_images[i]).nomClasse;
+
+    for( const MyImage * image : _images){
+        nomClasse = OCR::instance()->getCorrespondance( *image).nomClasse;
         if( rapport.find(nomClasse) != rapport.end())
             rapport[nomClasse]++;
         else
             rapport[nomClasse]=1;
+        //if( nom != nomClasse )
+        //    cout << nomClasse << "  " << image->getFilename() << endl;        
     }
 
     return rapport;

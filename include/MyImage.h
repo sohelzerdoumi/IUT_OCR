@@ -28,7 +28,7 @@ class MyImage
         std::string                 getMD5() const;
         void display() const;
         cimg_library::CImg<int>        _cimg;
-
+        inline std::string                     getFilename() const { return _filename; };
     private:
         std::vector<Caracteristique *>  _caracteristiques;
         void                        generateCaracteristiques();
