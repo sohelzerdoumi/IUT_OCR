@@ -1,5 +1,6 @@
 #include "MyImage.h"
 #include "utils.h"
+#include "MD5.h"
 
 #include <cmath>
 #include <iostream>
@@ -136,6 +137,18 @@ void MyImage::loadCaracteristiques(){
     }
 
     generateCaracteristiques();
+}
+
+
+std::string                 MyImage::getMD5() const{
+    int largeur = _cimg.width();
+    int hauteur =  _cimg.height();
+    string datas;
+    for(int c = 0; c < largeur ; c++ )
+        for(int l = 0 ; l < hauteur ; l++){
+            datas += intToString(_cimg.data(c,l)[0]);
+        }
+    return md5(datas);
 }
 
 void MyImage::display() const{

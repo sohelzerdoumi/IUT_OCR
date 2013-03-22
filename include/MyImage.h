@@ -25,6 +25,7 @@ class MyImage
 
         bool operator==(const MyImage & i) const;
         float compare(const MyImage & img, const std::string & classeName = "") const;
+        std::string                 getMD5() const;
         void display() const;
         cimg_library::CImg<int>        _cimg;
 

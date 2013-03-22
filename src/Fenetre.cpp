@@ -17,7 +17,7 @@ void Fenetre::run(){
     sf::Event event;
     clearWindow();
     while(_window.IsOpened()){
-        sf::Sleep(1.0f/100);
+        sf::Sleep(1.0f/300);
         while( _window.GetEvent(event) )
                treatEvent(event);
 
@@ -42,7 +42,17 @@ void Fenetre::treatEvent( sf::Event & event){
              << " classe = " << c.nomClasse << endl;
     }
 
+    if( ( event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::S)  ){
+        string filename;
+        MyImage img( _window.Capture() );
+        Correspondance c = OCR::instance()->getCorrespondance(img);
 
+        filename = "base/"+c.nomClasse + "/"+ img.getMD5() + ".bmp";
+        _window.Capture().SaveToFile( filename );
+
+        cout << "fichier créé :" << filename << endl;
+
+    }
     if( mouseX < 0 or mouseX > WINDOW_WIDTH or mouseY < 0 or mouseY > WINDOW_HEIGHT )
         return;
 

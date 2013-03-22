@@ -13,6 +13,7 @@ class Fenetre
         void run();
         void treatEvent(sf::Event & event);
         void clearWindow();
+        void saveImage();
 
     private:
         sf::RenderWindow _window;

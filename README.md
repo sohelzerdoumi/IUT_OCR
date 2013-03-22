@@ -34,6 +34,7 @@ L'objectif est de reconnaitre une forme contenu dans une image.
 
 ######Commandes:######
 *  touche C : lance l'analyse de l'image ( voir le terminal )
+*  touche S : sauvegarde l'image analysée dans la classe reconnu
 *  clique gauche : dessiner 
 *  clique droit  : tout effacer
 
