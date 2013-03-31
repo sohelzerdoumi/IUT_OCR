@@ -7,6 +7,8 @@
 #include "utils.h"
 #include "SimpleOpt.h"
 #include "SimpleGlob.h"
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -45,6 +47,10 @@ void ShowHelp(string filename){
         cout << setw(option_width) << "-f FILE, --file=FILE"
              << setw(description_dist) << ""
               << "Trouve le caractere correspondant à l'image" << endl;
+
+        cout << setw(option_width) << "-X"
+             << setw(description_dist) << ""
+              << "Lance l'interface graphique" << endl;
 }
 
 
@@ -69,10 +75,15 @@ void runGUI(const string & option, const map<string,string> & flags){
     Fenetre f;
     f.run();
 }
-
+bool testValue(int i){
+    return true;
+}
 int main(int argc, char ** argv)
 {
 
+    std::vector<int> v;
+    count_if( v.begin(), v.end() , testValue );
+    count_if( v.begin(), v.end() , [](int i){return true;} );
 
     OPT_T action = ACT_HELP;
     string action_option ;

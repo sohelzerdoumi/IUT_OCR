@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <functional>
 
 using namespace cimg_library;
 using namespace std;
@@ -100,8 +101,8 @@ float MyImage::compare(const MyImage & img, const std::string & classeName) cons
             diff += _caracteristiques[i]->compare(img._caracteristiques[i])*_caracteristiques[i]->ponderation;
             somme_ponderation += _caracteristiques[i]->ponderation;
         }
-        if( getConfigValueString("ocr.caracteristique.mode") == "cible" ){
-            if( isConfigValuesContainString( "ocr.caracteristique.cible." + _caracteristiques[i]->nom , classeName)){
+        if( getConfigValueString("ocr.caracteristique.mode") == "custom" ){
+            if( isConfigValuesContainString( "ocr.caracteristique.custom." + _caracteristiques[i]->nom , classeName)){
                 diff += _caracteristiques[i]->compare(img._caracteristiques[i])*_caracteristiques[i]->ponderation;
                 somme_ponderation += _caracteristiques[i]->ponderation;
             }
@@ -140,15 +141,16 @@ void MyImage::loadCaracteristiques(){
 }
 
 
-std::string                 MyImage::getMD5() const{
+std::string    MyImage::getMD5() const{
     int largeur = _cimg.width();
     int hauteur =  _cimg.height();
     string datas;
     for(int c = 0; c < largeur ; c++ )
         for(int l = 0 ; l < hauteur ; l++){
-            datas += intToString(_cimg.data(c,l)[0]);
+            datas += std::to_string(_cimg.data(c,l)[0]);
         }
-    return md5(datas);
+    std::hash<std::string> str_hash; 
+    return std::to_string(str_hash(datas));
 }
 
 void MyImage::display() const{
@@ -166,3 +168,4 @@ MyImage::~MyImage(){
         delete carac;
 
 }
+

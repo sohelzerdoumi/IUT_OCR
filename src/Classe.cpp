@@ -71,8 +71,8 @@ map<string,int>   Classe::test() const{
             rapport[nomClasse]++;
         else
             rapport[nomClasse]=1;
-        //if( nom != nomClasse )
-        //    cout << nomClasse << "  " << image->getFilename() << endl;        
+        if( nom != nomClasse )
+            cout << nomClasse << "  " << image->getFilename() << endl;        
     }
 
     return rapport;

@@ -5,6 +5,9 @@
 #include "utils.h"
 #include "OCR.h"
 
+
+
+
 using namespace std;
 
 
@@ -68,7 +71,7 @@ void  OCR::displayConfusionMatrix() const{
      *  Affichage en-tete tableau
      */
      cout << "    |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  ?" << endl;
-     cout << "-------------------------------------------------------" << endl;
+     cout << std::setfill('-') << std::setw(62)  << " " << std::setfill(' ')  << endl ;
 
     /*
      *  Rapport par classe
@@ -78,36 +81,27 @@ void  OCR::displayConfusionMatrix() const{
         rapport = classeCurrent->test();
         cout << "   " << classeCurrent->nom ;
         for(int j=0; j < 10 ; j++){
-             if( rapport.find( intToString(j)) ==rapport.end() ){
+             if( rapport.find( std::to_string(j)) ==rapport.end() ){
                 cout << "|  0 " ;
              }else{
+                cout << "| " ;
 
-                if( classeCurrent->nom == intToString(j) ){
-                    success += rapport[intToString(j)];
-                    cout << "| " ;
-                    cout << "\33[1m\33[32m\33[40m";  // Vert
-                    cout <<  setw(2) ;
-                    cout << rapport[intToString(j)] << " ";
-                    cout << "\33[0m" ;
+                if( classeCurrent->nom == std::to_string(j) ){
+                    success += rapport[std::to_string(j)];
+                    cout << IO_BOLDGREEN << IO_BG_GREY;  // Vert
                 }
                 else{
-                    fail += rapport[intToString(j)] ;
-                    cout << "| " ;
-                    cout << "\33[1m\33[32m\33[41m";  // Rouge
-                    cout <<  setw(2) ;
-                    cout << rapport[intToString(j)] << " ";
-                    cout << "\33[0m" ;
+                    fail += rapport[std::to_string(j)] ;
+                    cout << IO_BOLDYELLOW << IO_BG_RED;  // Rouge
                 }
 
+                cout <<  setw(2) << rapport[std::to_string(j)] << " ";
+                cout << IO_RESET   ;
              }
         }
 
         nonReconnu += rapport["?"] ;
-        cout << "| " ;
-        cout << "\33[1m\33[32m\33[44m"; // Bleu
-        cout <<  setw(2) ;
-        cout << rapport["?"] << " ";
-        cout << "\33[0m" ;
+        cout << "| " << IO_BOLDGREEN << IO_BG_BLUE <<setw(2) << rapport["?"] << " " << IO_RESET ;
 
 
 

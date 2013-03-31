@@ -14,6 +14,8 @@ L'objectif est de reconnaitre une forme contenu dans une image.
 
 > cmake . &&  make
 
+A noter que vous devez avoir la commande gm et convert afin de pouvoir utiliser l'application.
+
 ##Utilisation##
 
 ###Matrice de Confusion###
@@ -37,6 +39,5 @@ L'objectif est de reconnaitre une forme contenu dans une image.
 *  touche S : sauvegarde l'image analysée dans la classe reconnu
 *  clique gauche : dessiner 
 *  clique droit  : tout effacer
-
 
 

@@ -7,7 +7,7 @@ ocr :
     };
     caracteristique:
     {
-        mode = "cible";
+        mode = "custom";
         defaut:
         {
             profil :
@@ -44,7 +44,7 @@ ocr :
             };
         };
 
-        cible:
+        custom:
         {
             profil:             ["0","1","2","3","4","5","6","7_","8","9"]; // le profil s'appliquera aux classes 0,1,2 .... , 9
             courbure:           ["0_","1_","2_","3_","4","5_","6_","7","8_","9_"];

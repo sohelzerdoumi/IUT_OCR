@@ -56,11 +56,6 @@ string getConfigValueString( const string & variable ){
 }
 
 
-string intToString(int nombre){
-    ostringstream flux;
-    flux << nombre ;
-    return flux.str();
-}
 
 std::vector <std::string> read_directory( const std::string& path )
   {
